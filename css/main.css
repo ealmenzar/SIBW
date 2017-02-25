@@ -96,17 +96,79 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-
+#top-nav{
+    top:0;
+    left:0;
+    position:fixed;
+    width:100%;
+    height: 75px;
+    z-index:10;
+    background: rgba(240, 240, 240, 0.76);
+}
+#top-nav ul{
+    margin: 0;
+    display:inline-flex;
+    width:350px;
+    list-style:none;
+}
+#top-nav ul li{
+    top:0;
+    width: auto;
+    vertical-align: middle;
+}
+#top-nav ul li:hover{
+    background:rgba(140, 140, 140, 0.76);
+}
+#top-nav ul li a{
+    color:#000;
+    text-decoration:none;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    padding: 26.5px 10px;
+}
+#main-notice{
+    position: relative;
+    text-align: center;
+}
+#main-notice a img{
+    width: 80%;
+    height: 700px;
+}
+p{
+    width: 80%;
+    text-align: left;
+    margin-left: 10%; 
+} 
 .three-columns {
-    column-count: 3;
-    column-gap: 40px;
-    column-rule: 3px outset #054972;
-    column-rule-style: dotted;
+    display: table;
+}
+.three-columns div{
+    text-align: center;
+}
+.row{
+    position: relative;
+    display: table-row;
+}
+.column-1{
+    display: table-cell;
+    width: 20%;
+}
+.column-2{
+    display: table-cell;
+    width: 30%;
+
+}
+.column-3{
+    display: table-cell;
+    width: 40%;
 }
 
 
 
-
+h3{
+    color:rgb(140, 140, 140);
+}
 
 
 
