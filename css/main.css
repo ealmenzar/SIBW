@@ -110,13 +110,16 @@ textarea {
 #top-nav ul{
     margin: 0;
     display:inline-flex;
-    width:750px;
+    width:500px;
     list-style:none;
 }
 #top-nav ul li{
     top: 0;
     width: auto;
-    vertical-align: middle;
+}
+#top-nav a img{
+    width: 150px;
+    margin-left: 20px;
 }
 #top-nav ul li:hover{
     background: rgba(155, 95, 33, 0.11);
@@ -129,10 +132,10 @@ textarea {
     text-align: center;
     font-size: 120%;
     display: block;
-    padding: 15px 10px;
+    padding: 28px 0;
 }
 #top-nav ul li a img{
-    width: 150px;
+    width:20%;
 }
 
 #main-new{
@@ -142,18 +145,13 @@ textarea {
     background-color: rgba(155, 95, 33, 0.11);
 }
 #main-new a img{
-    width: 60%;
+    width: 70%;
 }
-#main-new a img:hover{
-    background-size: 200%;
-    background-color: rgba(155, 95, 33, 0.11);
-    border: double;
-    border-color: rgba(155, 95, 33, 0.32);
+#main-new p a{
+    text-decoration:none;
 }
 #main-new p a:hover{
-    text-transform: uppercase;
     font-weight: bold;
-    font-size: x-large;
 }
 p{
     width: 80%;
@@ -175,19 +173,18 @@ p{
     display: table-cell;
     width: 40%;
     background-color: rgba(155, 95, 33, 0.17);
-    border: 2px solid rgba(128, 128, 128, 0.45);
+    border-right: 2px solid rgba(128, 128, 128, 0.45);
 }
 .column-2{
     display: table-cell;
     width: 30%;
     background-color: rgba(155, 95, 33, 0.13);
-    border: 2px solid rgba(128, 128, 128, 0.45);
+    border-right: 2px solid rgba(128, 128, 128, 0.45);
 }
 .column-3{
     display: table-cell;
     width: 20%;
     background-color: rgba(155, 95, 33, 0.04);
-    border: 2px solid rgba(128, 128, 128, 0.45);
 }
 
 
