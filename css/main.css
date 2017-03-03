@@ -15,6 +15,8 @@ html {
     font-size: 1em;
     line-height: 1.4;
     margin: 3%;
+    margin-top: 5%;
+    font-family: "Calibri Light";
 }
 
 /*
@@ -96,193 +98,145 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-
-.three-columns {
-    column-count: 3;
-    column-gap: 40px;
-    column-rule: 3px outset #054972;
-    column-rule-style: dotted;
+#top-nav{
+    top:0;
+    left:0;
+    position:fixed;
+    width:100%;
+    height: 90px;
+    z-index:10;
+    background: rgba(240, 240, 240, 0.76);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
-
-/*
- * Hide visually and from screen readers
- */
-
-.hidden {
-    display: none !important;
-}
-
-/*
- * Hide only visually, but have it available for screen readers:
- * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
- */
-
-.visuallyhidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-}
-
-/*
- * Extends the .visuallyhidden class to allow the element
- * to be focusable when navigated to via the keyboard:
- * https://www.drupal.org/node/897638
- */
-
-.visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus {
-    clip: auto;
-    height: auto;
+#top-nav ul{
     margin: 0;
-    overflow: visible;
-    position: static;
+    display:inline-flex;
+    width:750px;
+    list-style:none;
+}
+#top-nav ul li{
+    top: 0;
     width: auto;
+    vertical-align: middle;
 }
+#top-nav ul li:hover{
+    background: rgba(155, 95, 33, 0.11);
+}
+#top-nav ul li a{
+    color:#000;
+    text-decoration:none;
+    font-weight: bold;
+    font-family: "Calibri Light";
+    text-align: center;
+    font-size: 120%;
+    display: block;
+    padding: 15px 10px;
+}
+#top-nav ul li a img{
+    width: 150px;
+}
+
+#main-new{
+    position: relative;
+    text-align: center;
+    border: 2px solid grey;
+    background-color: rgba(155, 95, 33, 0.11);
+}
+#main-new a img{
+    width: 60%;
+}
+#main-new a img:hover{
+    background-size: 200%;
+    background-color: rgba(155, 95, 33, 0.11);
+    border: double;
+    border-color: rgba(155, 95, 33, 0.32);
+}
+#main-new p a:hover{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: x-large;
+}
+p{
+    width: 80%;
+    text-align: left;
+    margin-left: 10%; 
+} 
+.three-columns {
+    display: table;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.three-columns div{
+    text-align: center;
+}
+.row{
+    position: relative;
+    display: table-row;
+}
+.column-1{
+    display: table-cell;
+    width: 40%;
+    background-color: rgba(155, 95, 33, 0.17);
+    border-right: 2px solid rgba(128, 128, 128, 0.45);
+}
+
+.column-2{
+    display: table-cell;
+    width: 30%;
+    background-color: rgba(155, 95, 33, 0.13);
+    border-right: 2px solid rgba(128, 128, 128, 0.45);
+}
+.column-3{
+    display: table-cell;
+    width: 20%;
+    background-color: rgba(155, 95, 33, 0.04);
+}
+
+
+
+h3{
+    color:rgb(140, 140, 140);
+}
+
+.c-1{
+    display: table-cell;
+    position: relative;
+    text-align: center;
+    border: 2px solid grey;
+    background-color: rgba(155, 95, 33, 0.11);
+    width: 80%;
+}
+
+.c-2 {
+    display: table-cell;
+    width: 20%;
+    background-color: rgb(255, 255, 255);
+    margin-left: 10%;
+    text-align: center;
+}
+
+footer{
+    background-color: rgba(155, 95, 33, 0.11);
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+footer ul{
+    display: inline-flex;
+    list-style: none;
+    text-align: center;
+}
+
+
 
 /*
- * Hide visually and from screen readers, but maintain layout
+QUE FUNCIONE EN DOS NAVEGADORES
+QUE AL HACER Crtl + ó Ctrl - LAS IMÁGENES TAMBIÉN AUMENTEN O DISMINUYAN
+ARREGLAR UN PIE DE PÁGINA (ACCESO A REDES SOCIALES, DERECHOS...)
+FALTA PÁGINA DE IMPRESIÓN
  */
 
-.invisible {
-    visibility: hidden;
-}
 
-/*
- * Clearfix: contain floats
- *
- * For modern browsers
- * 1. The space content is one way to avoid an Opera bug when the
- *    `contenteditable` attribute is included anywhere else in the document.
- *    Otherwise it causes space to appear at the top and bottom of elements
- *    that receive the `clearfix` class.
- * 2. The use of `table` rather than `block` is only necessary if using
- *    `:before` to contain the top-margins of child elements.
- */
 
-.clearfix:before,
-.clearfix:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
-}
 
-.clearfix:after {
-    clear: both;
-}
 
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-    /* Style adjustments for viewports that meet the condition */
-}
-
-@media print,
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 1.25dppx),
-       (min-resolution: 120dpi) {
-    /* Style adjustments for high resolution devices */
-}
-
-/* ==========================================================================
-   Print styles.
-   Inlined to avoid the additional HTTP request:
-   http://www.phpied.com/delay-loading-your-print-css/
-   ========================================================================== */
-
-@media print {
-    *,
-    *:before,
-    *:after,
-    *:first-letter,
-    *:first-line {
-        background: transparent !important;
-        color: #000 !important; /* Black prints faster:
-                                   http://www.sanbeiji.com/archives/953 */
-        box-shadow: none !important;
-        text-shadow: none !important;
-    }
-
-    a,
-    a:visited {
-        text-decoration: underline;
-    }
-
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
-
-    abbr[title]:after {
-        content: " (" attr(title) ")";
-    }
-
-    /*
-     * Don't show links that are fragment identifiers,
-     * or use the `javascript:` pseudo protocol
-     */
-
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
-        content: "";
-    }
-
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
-
-    /*
-     * Printing Tables:
-     * http://css-discuss.incutio.com/wiki/Printing_Tables
-     */
-
-    thead {
-        display: table-header-group;
-    }
-
-    tr,
-    img {
-        page-break-inside: avoid;
-    }
-
-    img {
-        max-width: 100% !important;
-    }
-
-    p,
-    h2,
-    h3 {
-        orphans: 3;
-        widows: 3;
-    }
-
-    h2,
-    h3 {
-        page-break-after: avoid;
-    }
-}
