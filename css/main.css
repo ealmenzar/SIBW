@@ -14,6 +14,7 @@ html {
     top:0;
     left:0;
     position:fixed;
+    display:inline-flex;
     width:100%;
     height: 90px;
     z-index:10;
@@ -22,13 +23,20 @@ html {
 #top-nav ul{
     margin: 0;
     display:inline-flex;
-    width:750px;
     list-style:none;
 }
 #top-nav ul li{
     top: 0;
     width: auto;
-    vertical-align: middle;
+}
+#top-nav a{
+    top:0;
+    display:inline-flex;
+}
+#top-nav a img{
+    padding: 16px 0;
+    width: 150px;
+    margin-left: 20px;
 }
 #top-nav ul li:hover{
     background: rgba(155, 95, 33, 0.11);
@@ -41,10 +49,12 @@ html {
     text-align: center;
     font-size: 120%;
     display: block;
-    padding: 15px 10px;
+    padding: 20px 15px;
 }
 #top-nav ul li a img{
-    width: 150px;
+    padding: 0;
+    width:30px;
+    transform: translateY(10px);
 }
 
 #main-new{
@@ -54,13 +64,13 @@ html {
     background-color: rgba(155, 95, 33, 0.11);
 }
 #main-new a img{
-    width: 60%;
+    width: 70%;
 }
-
+#main-new p a{
+    text-decoration:none;
+}
 #main-new p a:hover{
-    text-transform: uppercase;
     font-weight: bold;
-    font-size: x-large;
 }
 p{
     width: 80%;
@@ -69,12 +79,48 @@ p{
 } 
 .three-columns {
     display: table;
-    margin-top: 5%;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin: 5%;
 }
 .three-columns div{
     text-align: center;
+}
+.row{
+    position: relative;
+    display: table-row;
+}
+.column-1{
+    display: table-cell;
+    width: 40%;
+    background-color: rgba(155, 95, 33, 0.17);
+    border-right: 2px solid rgba(128, 128, 128, 0.45);
+}
+.column-2{
+    display: table-cell;
+    width: 30%;
+    background-color: rgba(155, 95, 33, 0.13);
+    border-right: 2px solid rgba(128, 128, 128, 0.45);
+}
+.column-3{
+    display: table-cell;
+    width: 20%;
+    background-color: rgba(155, 95, 33, 0.04);
+}
+
+
+
+h3{
+    color:rgb(140, 140, 140);
+}
+
+#new{
+    position: relative;
+    text-align: center;
+    border: 2px solid grey;
+    background-color: rgba(155, 95, 33, 0.11);
+}
+
+.hidden {
+    display: none !important;
 }
 .row{
     position: relative;
