@@ -112,43 +112,8 @@ h3{
     color:rgb(140, 140, 140);
 }
 
-#new{
-    position: relative;
-    text-align: center;
-    border: 2px solid grey;
-    background-color: rgba(155, 95, 33, 0.11);
-}
-
 .hidden {
     display: none !important;
-}
-.row{
-    position: relative;
-    display: table-row;
-}
-.column-1{
-    display: table-cell;
-    width: 40%;
-    background-color: rgba(155, 95, 33, 0.17);
-    border-right: 2px solid rgba(128, 128, 128, 0.45);
-}
-
-.column-2{
-    display: table-cell;
-    width: 30%;
-    background-color: rgba(155, 95, 33, 0.13);
-    border-right: 2px solid rgba(128, 128, 128, 0.45);
-}
-.column-3{
-    display: table-cell;
-    width: 20%;
-    background-color: rgba(155, 95, 33, 0.04);
-}
-
-
-
-h3{
-    color:rgb(140, 140, 140);
 }
 
 .c-1{
