@@ -133,6 +133,15 @@ h4{
     background-color: rgba(155, 95, 33, 0.11);
     width: 80%;
 }
+.main-img{
+    margin-bottom: 5%;
+}
+.main-img p{
+    font-size: small;
+    font-style: italic;
+    margin-left: 15%;
+    color: rgba(34, 34, 34, 0.47);
+}
 
 .c-2 {
     display: table-cell;
@@ -172,18 +181,29 @@ footer{
     display: table-cell;
     position: relative;
     text-align: center;
-    border: 2px solid grey;
     width: 80%;
+    font-family: "Times New Roman";
 }
 
+#print-logo{
+    text-align: right;
+    color: rgba(34, 34, 34, 0.44);
+    margin-right: 5%;
+    font-size: larger;
+}
+#print-logo img{
+    opacity: 0.5;
+}
+#print-logo p{
+    font-size: small;
+    color: rgba(18, 0, 34, 0.66);
+    text-align: right;
+}
 
 /*
 QUE FUNCIONE EN DOS NAVEGADORES
 QUE AL HACER Crtl + ó Ctrl - LAS IMÁGENES TAMBIÉN AUMENTEN O DISMINUYAN
-ARREGLAR UN PIE DE PÁGINA (ACCESO A REDES SOCIALES, DERECHOS...)
-FALTA PÁGINA DE IMPRESIÓN
-ARREGLAR TOP-NAV (que se vean los iconos al lado de cada palabra y bien alineados)
-AÑADIR PIE DE FOTO A LAS IMÁGENES EN noticia.html
+ARREGLAR EL PIE DE PÁGINA (ACCESO A REDES SOCIALES, DERECHOS...)
 
 !! INCLUIR TODOS LOS meta
  */
