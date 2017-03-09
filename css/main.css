@@ -9,6 +9,10 @@ html {
     margin-top: 5%;
     font-family: "Calibri Light";
 }
+body{
+    width: 1024px;
+    margin:0 auto;
+}
 
 #top-nav{
     top:0;
@@ -160,21 +164,29 @@ footer{
     display: inline-flex;
     list-style: none;
     text-align: center;
-    margin-inside: 0;
+    width: 100%;
+    padding: 20px 0 0 0;
 }
 
 #social ul li{
     top: 0;
     width: auto;
     vertical-align: middle;
-    padding-right: 3%;
-    margin-left: 0;
-    margin-right: 0;
+    margin:0 auto;
+
+}
+#social ul li a{
+    display: block;
+}
+#social img{
+    width:50px;
 }
 
 #rights p {
     font-style: normal;
     font-size: medium;
+    margin-left :100px;
+    padding-bottom: 20px;
 }
 
 .print{
@@ -201,8 +213,8 @@ footer{
 }
 
 /*
-QUE FUNCIONE EN DOS NAVEGADORES
-QUE AL HACER Crtl + ó Ctrl - LAS IMÁGENES TAMBIÉN AUMENTEN O DISMINUYAN
+*QUE FUNCIONE EN DOS NAVEGADORES
+*QUE AL HACER Crtl + ó Ctrl - LAS IMÁGENES TAMBIÉN AUMENTEN O DISMINUYAN
 ARREGLAR EL PIE DE PÁGINA (ACCESO A REDES SOCIALES, DERECHOS...)
 
 !! INCLUIR TODOS LOS meta
