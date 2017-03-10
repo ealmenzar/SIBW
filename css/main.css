@@ -10,7 +10,7 @@ html {
     font-family: "Calibri Light";
 }
 body{
-    width: 1024px;
+    max-width: 1024px;
     margin:0 auto;
 }
 
@@ -151,7 +151,7 @@ h4{
     display: table-cell;
     width: 20%;
     background-color: rgb(255, 255, 255);
-    margin-left: 10%;
+    margin-left: 15%;
     text-align: center;
 }
 
