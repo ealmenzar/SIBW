@@ -7,7 +7,7 @@
     <meta name="keywords" content="música noticias">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-
+    <script type="text/javascript" src="js/comment.js"></script>
     <title>Here - Teenage Fanclub</title>
 </head>
 <body>
@@ -36,7 +36,33 @@
             </ul>
         </nav>
     </header>
+    <aside id="coment-block">
+    <ul id="comments">
+    <li>
+        <b>Autor:</b> Anónimo<br>
+        <b>Fecha:</b> 20/02/1014 <b>Hora:</b> 13:21<br>
+        <p>Hola buenas, soy Anónimo y esta canción es una pasada.</p>
+    </li>
+    <li>
+        <b>Autor:</b> Admin<br>
+        <b>Fecha:</b> 20/02/1014 <b>Hora:</b> 17:52<br>
+        <p>Gracias Anónimo, a nosotros también nos lo parece.</p>
+    </li>
+    </ul>
+    <p id="error-1" class="error">
+    Por favor no se haga pasar por parte del staff
+    </p>
+    <p id="error-2" class="error">
+    Por favor siga las reglas de la pagina web y no comparta información personal (como correos y numeros de teléfono), ni tampoco insulte.
+    </p>
+    <div>
+        <input type="text" placeholder="Autor" id="author" onkeyup="ValidateAuthor(this,'show','error-1')"><br>
+        <input type="text" placeholder="Email" id="email"><br>
+        <textarea placeholder="Escribe aquí tu comentario..." id="comment" onkeyup="ValidateComment(this,'show','error-2')"></textarea><br>
+        <button class="comment-btn" onclick="SubmitComment('author','email','comment','comments')">Enviar Comentario</button>
+    </div>
 
+    </aside>
 
     <div class="two-columns">
         <div class="row">
@@ -98,11 +124,14 @@
                     tierra de paraguas y pies mojados por la lluvia, para recordarnos tal cosa. Pero no es nada nuevo que de allí sigan saliendo
                     puras joyas de la constelación pop.
                 </p>
-                <p>
-                    <a href="noticia_imprimir.html">
-                        <img src="img/print.png" style="max-width: 6%">
-                    </a>
-                </p>
+                <div id="bottom-new">
+                    <div >
+                        <a href="noticia_imprimir.html">
+                            <img src="img/print.png">
+                        </a>
+                        <button class="comment-btn" onclick="Toggle('show','coment-block')">Comentar</button>
+                    </div>
+                </div>
             </div>
             <div class="c-2">
                 <h1>Discos relacionados</h1>

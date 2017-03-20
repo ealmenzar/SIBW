@@ -160,9 +160,12 @@ footer{
     margin-top: 5%;
 }
 
+ul{
+    list-style: none;
+}
+
 #social ul{
     display: inline-flex;
-    list-style: none;
     text-align: center;
     width: 100%;
     padding: 20px 0 0 0;
@@ -195,6 +198,86 @@ footer{
     text-align: center;
     width: 80%;
     font-family: "Times New Roman";
+}
+.comment-btn{
+    width: 150px;
+    height: 50px;
+    margin-left: 20px;
+    background:rgb(150,150,150);
+    font-family: "Calibri Light";
+    border-radius: 10px;
+    border:0px solid;
+    color: #fff;
+    font-size: 20px;
+}
+
+#bottom-new{
+    text-align: left;
+}
+#bottom-new div{
+    display: inline-flex;
+    margin-left: 10%;
+}
+#bottom-new div a{
+    display: block;
+    width: 60px;
+    height: 60px;
+}
+#bottom-new div a img{
+    display: block;
+    width: 60px;
+    height: 60px;
+}
+
+.error{
+    background: #ff4040;
+    padding: 5px;
+    border-radius: 5px;
+    display: none;
+}
+
+#coment-block{
+    top: 0;
+    right: -400px;
+    position: fixed;
+    width: 400px;
+    height: 100%;
+    background-color: #d9cdbb;
+    z-index: 1;
+    -webkit-transition: all 2s;
+    transition: all 2s;
+}
+
+#coment-block p.show{
+    display: block;
+}
+
+#coment-block.show{
+    right: 0;
+}
+
+#coment-block div{
+    width: 100%;
+    text-align: center;
+}
+
+#coment-block div input[type="text"]{
+    width: 90%;
+    margin: 5px 5%;
+    height: 25px;
+}
+
+#coment-block div textarea{
+    width: 90%;
+    margin: 5px 5%;
+    height: 150px;
+}
+
+#comments{
+    margin-top:100px;
+}
+#comments li p{
+    margin-left:10px;
 }
 
 #print-logo{
