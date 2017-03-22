@@ -242,10 +242,11 @@ ul{
     position: fixed;
     width: 400px;
     height: 100%;
-    background-color: #d9cdbb;
+    background-color: rgb(221, 214, 207);
     z-index: 1;
     -webkit-transition: all 2s;
     transition: all 2s;
+    overflow: scroll;
 }
 
 #coment-block p.show{
