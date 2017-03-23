@@ -59,8 +59,17 @@ function ValidateAuthor(e,idError,classError){
 		RemoveClass(classError,idError);
 	}
 }
+function ValidateEmail(e, idError, classError){
+	var regex=/[^\ ]*@[^\ ]*\.[^\ ]+)/i;
+	if(regex.test(e.value)){
+		RemoveClass(classError,idError);
+	}else{
+		len=e.value.match(regex)[0].length;
+		AddClass(classError,idError);
+	}
+}
 function ValidateComment(e,idError,classError){
-	var regex=/(cabron|puta|puto|tonto|idiota|cateto|subnormal|inutil|pesado|cansino|[0-9]{9}|[^\ ]*@[^\ ]*\.[^\ ]+)/i;
+	var regex=/(tonto|idiota|cateto|inutil|inútil|Donald Trump|[0-9]{9}|[^\ ]*@[^\ ]*\.[^\ ]+)/i;
 	if(regex.test(e.value)){
 		len=e.value.match(regex)[0].length;
 		e.value=e.value.replace(regex,GenerateStars(len));
