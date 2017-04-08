@@ -10,7 +10,7 @@ html {
     font-family: "Calibri Light";
 }
 body{
-    max-width: 1024px;
+    background-color: rgba(155, 95, 33, 0.11);
     margin:0 auto;
 }
 
@@ -61,14 +61,19 @@ body{
     transform: translateY(10px);
 }
 
+.two-columns{
+    display: table;
+    padding-top: 3%;
+}
+
 #main-new{
     position: relative;
-    text-align: center;
-    border: 2px solid grey;
-    background-color: rgba(155, 95, 33, 0.11);
+    text-align: left;
+    border-bottom: #9f9f9f thin solid;
 }
+
 #main-new a img{
-    width: 70%;
+    width: 90%;
 }
 #main-new p a{
     text-decoration:none;
@@ -76,14 +81,27 @@ body{
 #main-new p a:hover{
     font-weight: bold;
 }
+.main-col-1{
+    display: table-cell;
+    width: 50%;
+    padding-bottom: 0;
+    position: relative;
+}
+.main-col-2{
+    position: relative;
+    padding-top: 0;
+    display: table-cell;
+    width: 50%;
+    text-align: left;
+}
 p{
     width: 80%;
     text-align: left;
-    margin-left: 10%; 
+    margin-left: 5%;
 } 
 .three-columns {
     display: table;
-    margin: 5%;
+    margin: 0%;
 }
 .three-columns div{
     text-align: center;
@@ -96,13 +114,13 @@ p{
     display: table-cell;
     width: 40%;
     background-color: rgba(155, 95, 33, 0.17);
-    border-right: 2px solid rgba(128, 128, 128, 0.45);
+    border-right: thin solid rgba(128, 128, 128, 0.45);
 }
 .column-2{
     display: table-cell;
     width: 30%;
     background-color: rgba(155, 95, 33, 0.13);
-    border-right: 2px solid rgba(128, 128, 128, 0.45);
+    border-right: thin solid rgba(128, 128, 128, 0.45);
 }
 .column-3{
     display: table-cell;
@@ -133,8 +151,7 @@ h4{
     display: table-cell;
     position: relative;
     text-align: center;
-    border: 2px solid grey;
-    background-color: rgba(155, 95, 33, 0.11);
+    border-right: #9f9f9f thin solid;
     width: 80%;
 }
 .main-img{
@@ -150,7 +167,8 @@ h4{
 .c-2 {
     display: table-cell;
     width: 20%;
-    background-color: rgb(255, 255, 255);
+    border-left: #9f9f9f;
+    background-color: rgb(255, 248, 248);
     margin-left: 15%;
     text-align: center;
 }
