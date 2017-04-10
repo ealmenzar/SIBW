@@ -4,7 +4,7 @@ session_start();
 include("inc/library.php");
 $link=conectar();
 $tpl=isset($_GET["tpl"])? $_GET["tpl"] :"Home";
-if($tpl=="LogIn" and isset($_SESSION)){
+if($tpl=="LogIn" and isset($_SESSION["name"])){
     $tpl="Home";
 }
 ?>

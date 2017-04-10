@@ -12,7 +12,7 @@ class Noticia {
         $this->grupo=$obj->grupo;
         $this->frase=$obj->frase;
         $this->autor=$obj->autor;
-        $this->fecha=$obj->fecha;
+        $this->publicacion=$obj->publicacion;
         $this->portada=$obj->portada;
         $this->pie=$obj->pie;
         $this->contenido=$obj->contenido;
@@ -39,7 +39,7 @@ class Noticia {
 	                </h4>
 	                <div id='autor'>
 	                    <address>por $this->autor</address>".
-	                    convertDateSystemToHuman($this->fecha)."
+	                    convertDateSystemToHuman($this->publicacion)."
 	                </div>
 	                </p>
 	                <div class='main-img'>
@@ -63,7 +63,7 @@ class Noticia {
     	if($this->isSet){
 	    	return "<h2> $this->titulo </h2>
 	                <h3> $this->grupo </h3>
-	                <a href='#~'>
+	                <a href='index.php?tpl=New&idNew=$this->id'>
 	                    <img src='$this->portada' style='max-width: 70%'>
 	                </a>
 	                <p>

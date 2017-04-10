@@ -183,6 +183,9 @@ return (msw << 16) | (lsw & 0xFFFF);
 }
 }
 
+/////////////////////////////////////////////////////////////////
+
+
 function GenerateStars(n){
 	var str="";
 	for (var i = 0; i < n; i++) {
