@@ -5,7 +5,12 @@ include("inc/library.php");
 $link=conectar();
 $tpl=isset($_GET["tpl"])? $_GET["tpl"] :"Home";
 if($tpl=="LogIn" and isset($_SESSION["name"])){
-    $tpl="Home";
+    if(isset($_GET["logout"])){
+        unset($_SESSION["name"]);
+        session_destroy();
+    }else{
+        $tpl="Home";
+    }
 }
 ?>
 <html lang="en">

@@ -24,6 +24,7 @@
             <?php 
             if(isset($_SESSION["name"])){
                 echo "Bienvenido ".$_SESSION["name"];
+                echo "<a href='index.php?tpl=LogIn&logout'>Log out</a>";
             }else{
                 echo "<a href='index.php?tpl=LogIn'>Log in</a>";
             }
