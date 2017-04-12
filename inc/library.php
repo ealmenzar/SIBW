@@ -39,8 +39,11 @@ function getLastNew($link){
 
 function getNews($link,$offset,$limit,$section){
 	//$sqlinjection section
-	if($section=="all"){
+	if($section==0){
 		$query="SELECT * FROM noticias ORDER BY id DESC LIMIT $limit OFFSET $offset ";
+	}else{
+		$query="SELECT * FROM noticias INNER JOIN noticia_etiqueta ON noticia_etiqueta.id_noticia=noticias.id 
+		WHERE noticia_etiqueta.id_etiqueta='$section' ORDER BY noticias.id DESC LIMIT $limit OFFSET $offset";
 	}
 	$result=$link->query($query);
 	$arrayNot=array();
@@ -52,5 +55,17 @@ function getNews($link,$offset,$limit,$section){
 		$i++;
 	}
 	return $arrayNot;
+}
+function getAllSections($link){
+	$query="SELECT * FROM etiquetas ORDER BY id DESC";
+	$result=$link->query($query);
+	$arrayTag=array();
+	$i=0;
+	while($obj=$result->fetch_object()){
+		$arrayTag[$obj->nombre]=$obj->id;
+		$i++;
+	}
+	$arrayTag["Todas"]=0;
+	return $arrayTag;
 }
 ?>

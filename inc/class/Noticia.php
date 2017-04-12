@@ -13,6 +13,7 @@ class Noticia {
         $this->frase=$obj->frase;
         $this->autor=$obj->autor;
         $this->publicacion=$obj->publicacion;
+        $this->modificacion=$obj->modificacion;
         $this->portada=$obj->portada;
         $this->pie=$obj->pie;
         $this->contenido=$obj->contenido;
@@ -38,8 +39,9 @@ class Noticia {
 	                    $this->frase
 	                </h4>
 	                <div id='autor'>
-	                    <address>por $this->autor</address>".
-	                    convertDateSystemToHuman($this->publicacion)."
+	                    <address>por $this->autor</address>
+	                    Publicación: ".convertDateSystemToHuman($this->publicacion)."<br>
+	                    Última modificación: ".convertDateSystemToHuman($this->modificacion)."
 	                </div>
 	                </p>
 	                <div class='main-img'>
@@ -55,7 +57,31 @@ class Noticia {
 	                        </a>
 	                        <button class='comment-btn' onclick='Toggle('show','coment-block')'>Comentar</button>
 	                    </div>
-	                </div>";
+	                    <div class='social'>
+	                    <ul>
+				            <li>
+		                    <a onclick=\"show('modal-new')\">
+				                    <img src='img/facebook.png'>
+				                </a>
+				            </li>
+				            <li>
+				                <a onclick=\"show('modal-new')\">
+				                    <img src='img/twitter.png'>
+				                </a>
+				            </li>
+			            </ul>
+			            </div>
+	                </div>
+	        <section class='overlay' id='modal-new'>
+
+	            <div>
+	            <svg onclick='hide(\"modal-new\")' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' viewBox='0 0 100 100' enable-background='new 0 0 100 100' xml:space='preserve'><g><path d='M83.288,88.13c-2.114,2.112-5.575,2.112-7.689,0L53.659,66.188c-2.114-2.112-5.573-2.112-7.687,0L24.251,87.907   c-2.113,2.114-5.571,2.114-7.686,0l-4.693-4.691c-2.114-2.114-2.114-5.573,0-7.688l21.719-21.721c2.113-2.114,2.113-5.573,0-7.686   L11.872,24.4c-2.114-2.113-2.114-5.571,0-7.686l4.842-4.842c2.113-2.114,5.571-2.114,7.686,0L46.12,33.591   c2.114,2.114,5.572,2.114,7.688,0l21.721-21.719c2.114-2.114,5.573-2.114,7.687,0l4.695,4.695c2.111,2.113,2.111,5.571-0.003,7.686   L66.188,45.973c-2.112,2.114-2.112,5.573,0,7.686L88.13,75.602c2.112,2.111,2.112,5.572,0,7.687L83.288,88.13z'/></g><text x='0' y='115' fill='#000000' font-size='5px' font-weight='bold' font-family=''Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif'>Created by Evgeniy Kozachenko</text><text x='0' y='120' fill='#000000' font-size='5px' font-weight='bold' font-family=''Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif'>from the Noun Project</text></svg>
+	                <h2> $this->titulo </h2>
+	                <img src='$this->portada' style='max-width: 70%'><br>
+	                @reflektor
+	            </div>
+	            
+	        </section>";
             }
     } 
 
@@ -72,7 +98,8 @@ class Noticia {
 	                </p>
 	                <a href='index.php?tpl=New&idNew=$this->id'>
 	                    Leer más
-	                </a>";
+	                </a>
+	                ";
         }
     } 
     function showMainNew(){

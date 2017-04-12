@@ -4,6 +4,7 @@ session_start();
 include("inc/library.php");
 $link=conectar();
 $tpl=isset($_GET["tpl"])? $_GET["tpl"] :"Home";
+
 if($tpl=="LogIn" and isset($_SESSION["name"])){
     if(isset($_GET["logout"])){
         unset($_SESSION["name"]);
@@ -12,6 +13,11 @@ if($tpl=="LogIn" and isset($_SESSION["name"])){
         $tpl="Home";
     }
 }
+
+if($tpl=="Sections" and !isset($_GET["section"])){
+    $_GET["section"]="Todas";
+}
+
 if($tpl=="New" and !isset($_GET["idNew"])){
     $tpl="Home";
 }
@@ -26,6 +32,7 @@ if($tpl=="New" and !isset($_GET["idNew"])){
 
         <script type="text/javascript" src="js/comment.js"></script>
         <script type="text/javascript" src="js/md5.js"></script>
+        <script type="text/javascript" src="js/utils.js"></script>
         <link rel="stylesheet" href="css/main.css">
 
         <title>SIBW</title>
@@ -38,7 +45,11 @@ if($tpl=="New" and !isset($_GET["idNew"])){
         <div class="row">
             <div class="c-1">
                 <?php 
-                    require("inc/content$tpl.php");
+                    if(file_exists ("inc/content$tpl.php")){
+                        require("inc/content$tpl.php");
+                    }else{
+                        require("inc/contentHome.php");
+                    }
                 ?>
             </div>
             <div class="c-2">

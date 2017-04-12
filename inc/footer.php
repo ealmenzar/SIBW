@@ -1,5 +1,5 @@
 <footer>
-    <div id="social">
+    <div class="social">
         <ul>
             <li>
                 <a href="https://www.facebook.com/">
