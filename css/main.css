@@ -32,6 +32,16 @@ a{
     display:inline-flex;
     list-style:none;
 }
+.no-log{
+    top: 0;
+    width: auto;
+    text-decoration:none;
+    padding: 15px 5px;
+    font-size: small;
+}
+.no-log:hover{
+    background: rgba(155, 95, 33, 0.11);
+}
 #top-nav ul li{
     top: 0;
     width: auto;
@@ -48,9 +58,7 @@ a{
     width: 150px;
     margin-left: 20px;
 }
-#top-nav ul li:hover{
-    background: rgba(155, 95, 33, 0.11);
-}
+
 #top-nav ul li a{
     color:#000;
     text-decoration:none;
@@ -64,29 +72,32 @@ a{
     width:30px;
     transform: translateY(10px);
 }
-#top-nav ul li input[type=text]{
-    width: 90%;
-    border: none;
-    border-radius: 4px;
-    border-bottom: 1px solid grey;
-    margin-right: 1%;
-}
-#top-nav ul li input[type=text]:focus{
-    border-bottom: 1px solid #555;
-}
+
 #top-nav ul li input[type=submit]{
-    transition-duration: 0.4s;
+    font-family: Calibri;
+    transition-duration: 0.2s;
     background-color: white;
-    border: 1px solid rgba(201, 188, 187, 0.62);
+    border: 2px solid rgba(201, 188, 187, 0.62);
     cursor: pointer;
     padding: 10px;
     border-radius: 4px;
     transform: translateY(5px);
+    width: 200%;
 }
 #top-nav ul li input[type=submit]:hover{
     background-color: #c9bcbb;
     color: white;
 }
+.bien{
+    right: 90px;
+    position: fixed;
+}
+.venido{
+    font-size: large;
+    font-weight: bold;
+    padding: 15px 5px;
+}
+
 .two-columns{
     display: table;
     padding-top: 2%;
@@ -196,6 +207,7 @@ h4{
 .main-img{
     margin-bottom: 5%;
 }
+
 .main-img p{
     font-size: small;
     font-style: italic;

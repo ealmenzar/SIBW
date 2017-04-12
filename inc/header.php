@@ -4,29 +4,41 @@
                 <img src="img/rreflektor.png">
             </a>
             <ul>
-                <li>
+                <li class="no-log">
                     <a href="portada.html">PORTADA
                         <img src="img/noun_772443_cc.png"></a>
                 </li>
-                <li>
+                <li class="no-log">
                     <a href="#~">DESTACADOS
                         <img src="img/noun_580939_cc.png"></a>
                 </li>
-                <li>
+                <li class="no-log">
                     <a href="#~">CONCIERTOS
                         <img src="img/concert.png"></a>
                 </li>
-                <li>
+                <li class="no-log">
                     <a href="#~">FESTIVALES
                         <img src="img/festival.png"></a>
                 </li>
             </ul>
-            <?php 
+            <?php
             if(isset($_SESSION["name"])){
-                echo "Bienvenido ".$_SESSION["name"];
-                echo "<a href='index.php?tpl=LogIn&logout'>Log out</a>";
+                echo "<ul class=\"bien\">
+                        <li class=\"venido\">
+                            Bienvenido ".$_SESSION["name"];"
+                        </li>
+                      </ul>";
+                echo "<ul>
+                        <li>
+                            <a href='index.php?tpl=LogIn&logout'><input type='submit' value='Log out'></a>
+                        </li>
+                      </ul>";
             }else{
-                echo "<a href='index.php?tpl=LogIn'>Log in</a>";
+                echo "<ul class=\"bien\">
+                        <li class=\"venido\">
+                            <a href='index.php?tpl=LogIn'><input type='submit' value='Log in'></a>
+                        </li>
+                      </ul>";
             }
             ?>
         </nav>

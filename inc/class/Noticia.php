@@ -18,6 +18,7 @@ class Noticia {
         $this->pie=$obj->pie;
         $this->contenido=$obj->contenido;
         $this->spotify=$obj->spotify;
+        $this->parrafo=$obj->parrafo;
         $this->isSet=true;
     }
 
@@ -45,7 +46,7 @@ class Noticia {
 	                </div>
 	                </p>
 	                <div class='main-img'>
-	                    <img src='$this->portada' style='width: 55%'>
+	                    <img src='$this->portada' style='width: 35%'>
 	                    $this->spotify
 	                    <p>$this->pie</p>
 	                </div>
@@ -87,7 +88,7 @@ class Noticia {
 
     function showShortNew() { 
     	if($this->isSet){
-    		$phraseCut=(strlen($this->frase)<=150)?$this->frase : substr ($this->frase, 0,150)."...";	
+    		$phraseCut=(strlen($this->parrafo)<=400)?$this->parrafo : substr ($this->parrafo, 0,400)."...";
 	    	return "<h2> $this->titulo </h2>
 	                <h3> $this->grupo </h3>
 	                <a href='index.php?tpl=New&idNew=$this->id'>
@@ -117,7 +118,7 @@ class Noticia {
 					                </a>
 					            </div>
 					            <div class='main-col-2'>
-					                $this->frase
+					                $this->parrafo
 					                <p>
 					                    <a href='index.php?tpl=New&idNew=$this->id' style='color: #999999; font-size: larger' >[...]</a>
 					                </p>
