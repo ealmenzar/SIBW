@@ -27,6 +27,17 @@
         <img src="img/rosalia-los-angeles.jpg" style="max-width: 80%">
     </a>
 
-<?php else: ?>
-    <!-- Aquí noticias relacionadas -->
+<?php else:
+    $limit=5;
+    $arrayCon=getConnectedNews($link,$limit,$_GET["idNew"]);
+    if(count($arrayCon)>0){
+        echo" <h3>Discos relacionados</h3>";
+        foreach ($arrayCon as $Con) {
+            echo "<h2>".$Con->titulo."</h2>";
+            echo "<h3>".$Con->grupo."</h3>";
+            echo "<a href='#~'><img src='".$Con->portada."'style='max-width: 80%'></a>";
+        }
+    }
+?>
+
 <?php endif; ?>
