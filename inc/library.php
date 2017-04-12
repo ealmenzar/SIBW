@@ -68,4 +68,20 @@ function getAllSections($link){
 	$arrayTag["Todas"]=0;
 	return $arrayTag;
 }
+
+function getConnectedNews($link, $limit, $id){
+    $query="SELECT * FROM noticias INNER JOIN noticia_etiqueta ON noticia_etiqueta.id_noticia=noticias.id 
+WHERE noticia_etiqueta.id_etiqueta in (SELECT id_etiqueta from noticia_etiqueta WHERE id_noticia='$id') 
+AND noticias.id<>'$id' GROUP BY noticias.id ORDER BY RAND() LIMIT $limit";
+    $result=$link->query($query);
+    $arrayCon=array();
+    $i=0;
+    while($obj=$result->fetch_object()){
+        $Con=new Noticia($link);
+        $Con->setByMySQLObject($obj);
+        $arrayCon[$i]=$Con;
+        $i++;
+    }
+    return $arrayCon;
+}
 ?>
