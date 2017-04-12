@@ -61,15 +61,45 @@ class Noticia {
 
     function showShortNew() { 
     	if($this->isSet){
+    		$phraseCut=(strlen($this->frase)<=150)?$this->frase : substr ($this->frase, 0,150)."...";	
 	    	return "<h2> $this->titulo </h2>
 	                <h3> $this->grupo </h3>
 	                <a href='index.php?tpl=New&idNew=$this->id'>
 	                    <img src='$this->portada' style='max-width: 70%'>
 	                </a>
 	                <p>
-	                    $this->frase
-	                </p>";
+	                    $phraseCut
+	                </p>
+	                <a href='index.php?tpl=New&idNew=$this->id'>
+	                    Leer más
+	                </a>";
         }
     } 
+    function showMainNew(){
+    	if($this->isSet){
+    		return "<div id='main-new'>
+				    	<div class='two-columns'>
+					        <div class='row'>
+					            <h2> $this->titulo </h2>
+					            <h3> $this->grupo </h3>
+					        </div>
+					        <div class='row'>
+					            <div class='main-col-1'>
+					                <a href='index.php?tpl=New&idNew=$this->id'>
+					                    <img src='$this->portada'>
+					                </a>
+					            </div>
+					            <div class='main-col-2'>
+					                $this->frase
+					                <p>
+					                    <a href='index.php?tpl=New&idNew=$this->id' style='color: #999999; font-size: larger' >[...]</a>
+					                </p>
+					            </div>
+					        </div>
+					    </div>
+					</div>";
+		}
+
+    }
 }
 ?>

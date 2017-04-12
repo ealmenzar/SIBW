@@ -1,7 +1,6 @@
 <?php
-include("inc/class/Noticia.php");
 $not = new Noticia($link);
-$not->setById(2);
+$not->setById($_GET["idNew"]);
 echo $not->showFullNew();
 ?>
 <!--<div id="main-new">

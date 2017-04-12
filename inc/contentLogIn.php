@@ -1,5 +1,4 @@
 <?php
-include("inc/class/User.php");
 if(isset($_POST["login-email"],$_POST["login-pwd-encrypted"])){
     $usr=new User($link);
     $usr->setByEmail($_POST["login-email"]);

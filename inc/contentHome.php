@@ -1,42 +1,17 @@
-<?php
-include("inc/class/Noticia.php");
-$not = new Noticia($link);
-$not->setById(2);
-echo $not->showFullNew();
-?>
-<!--<div id="main-new">
-    <div class="two-columns">
-        <div class="row">
-            <h2> Here </h2>
-            <h3> Teenage Fanclub </h3>
-        </div>
-        <div class="row">
-            <div class="main-col-1">
-                <a href="noticia.html">
-                    <img src="img/teenage-fanclub-here.jpg">
-                </a>
-            </div>
-            <div class="main-col-2">
-                <p>
-                    Aquéllo de los inventos con gaseosa quizás lo idearon Norman Blake, Gerard Love y Raymond McGinley,
-                    la MSN de Teenage Fanclub. ¿Por qué? Pues porque después de más de 25 años de carrera siguen siendo capaces
-                    de sacar nuevo material y de una forma muy digna. Y lo hacen airosos porque se dedican a lo que saben,
-                    a lo que siempre han sabido hacer. No de la misma forma y con otra intensidad, pero en esencia, pop de manual.
-                    Delicado y efectista. Redondo como un balón y certero como una flecha. Si se te dan bien los arroces, los días
-                    importantes no te metas a la cocina a hacer pasteles de arándanos.
-                </p>
-                <p>
-                    Así pues ‘Here’, el noveno álbum de Teenage Fanclub nos deja dos importantes lecciones. Por un lado, si haces
-                    una cosa bien, sigue haciéndola, que todo te va a ir mejor que probando estridencias que no te pegan.
-                    Y la segunda, que los escoceses siguen en muy buena forma.
-                </p>
-                <p>
-                    <a href="noticia.html" style="color: #999999; font-size: larger" >[...]</a>
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
+    <?php
+        $new=getLastNew($link);
+        echo $new->showMainNew();
+        $offset=1;
+        $limit=9;
+        $arrayNews=getNews($link,$offset,$limit,"all");
+        if(count($arrayNews)>0){
+            echo "<ul class='news-list'>";
+            foreach ($arrayNews as $New) {
+                echo "<li>".$New->showShortNew()."</li>";
+            }
+            echo "</ul>";
+        }
+    ?>
 <div class="three-columns">
     <div class="row">
         <div class="column-1">
@@ -203,4 +178,4 @@ echo $not->showFullNew();
             </p>
         </div>
     </div>
-</div>-->
+</div>

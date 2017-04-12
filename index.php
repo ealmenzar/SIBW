@@ -12,6 +12,9 @@ if($tpl=="LogIn" and isset($_SESSION["name"])){
         $tpl="Home";
     }
 }
+if($tpl=="New" and !isset($_GET["idNew"])){
+    $tpl="Home";
+}
 ?>
 <html lang="en">
     <head>
