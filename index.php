@@ -41,9 +41,6 @@ if($tpl=="New" and !isset($_GET["idNew"])){
     <?php 
     include("inc/header.php");
     ?>
-    <?php
-    include("inc/comentarios.php");
-    ?>
     <div class="two-columns">
         <div class="row">
             <div class="c-1">

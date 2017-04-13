@@ -29,11 +29,49 @@ class Noticia {
     	if($obj=$result->fetch_object()){
     		$this->setByMySQLObject($obj);
     	}
-    } 
+    }
+
+    function getComments($limit){
+	    if($this->isSet) {
+            $query = "SELECT * FROM comentarios WHERE id_noticia='$this->id' ORDER BY fecha ASC ";
+            $result = $this->link->query($query);
+            $this->comments = array();
+            $i = 0;
+            while ($i < $limit && $obj = $result->fetch_object()) {
+                $Com = new Comentario($this->link);
+                $Com->setByMySQLObject($obj);
+                $this->comments[$i] = $Com;
+                $i++;
+            }
+        }
+    }
 
     function showFullNew() { 
     	if($this->isSet){
-	    	return "<h1 style='font-size: xx-large'> $this->titulo </h1>
+    	    $str="";
+    	    if(isset($this->comments)){
+                    $str.="<aside id='coment-block'>
+                            <ul id='comments'>";
+                    foreach ($this->comments as $Com){
+                            $str.= $Com->showComment();
+                    }
+                    $str.= "</ul>
+                        <p id='error-1' class='error'>
+                        Por favor, no se haga pasar por parte del staff de la página web
+                        </p>
+                            <p id='error-2' class='error'>
+                        Por favor, siga las reglas de la página web y no comparta información personal, como correos, números de teléfono... Y NO INSULTE
+                        </p>
+                            <div>
+                                <input type='text' placeholder='Nombre' id='author' onkeyup='ValidateAuthor(this,\"show\",\"error - 1\")'><br>
+                                <input type='text' placeholder='Email' id='email' onkeyup='ValidateComment(this,\"show\",\"error - 2\")'><br>
+                                <textarea placeholder='Escribe aquí tu comentario...' id='comment' onkeyup='ValidateComment(this,\"show\",\"error - 2\")'></textarea><br>
+                                <button class='comment-btn' onclick='SubmitComment(\"author\",\"email\",\"comment\",\"comments\")'>Enviar Comentario</button>
+                            </div>
+                        
+                            </aside>";
+                    }
+                    $str.="<h1 style='font-size: xx-large'> $this->titulo </h1>
 	                <h2> $this->grupo </h2>
 	                <p>
 	                <h4>
@@ -83,6 +121,7 @@ class Noticia {
 	            </div>
 	            
 	        </section>";
+    	    return $str;
             }
     } 
 

@@ -1,6 +1,7 @@
 <?php
 include("inc/class/Noticia.php");
 include("inc/class/User.php");
+include("inc/class/Comentario.php");
 function conectar(){
 	$db = new mysqli('127.0.0.1', 'reflektor', '8pHqgP3PbUVzM7eh', 'reflektor_sibw');
 	if ($db->connect_errno) {
@@ -58,6 +59,7 @@ function getNews($link,$offset,$limit,$section,&$existNext=null){
 	$existNext=$result->fetch_object();
 	return $arrayNot;
 }
+
 function getAllSections($link){
 	$query="SELECT * FROM etiquetas ORDER BY id DESC";
 	$result=$link->query($query);

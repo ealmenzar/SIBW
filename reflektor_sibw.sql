@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-04-2017 a las 22:11:07
+-- Tiempo de generación: 13-04-2017 a las 14:57:28
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -35,6 +35,14 @@ CREATE TABLE `comentarios` (
   `email` varchar(250) NOT NULL,
   `id_noticia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `comentarios`
+--
+
+INSERT INTO `comentarios` (`autor`, `ip`, `id`, `fecha`, `contenido`, `email`, `id_noticia`) VALUES
+('Yo', '1234', 1, '2017-04-13 00:00:00', 'HOla', 'm@m', 5),
+('Yooo', '234', 2, '2017-04-13 00:00:00', 'hola hola', 'm@m', 5);
 
 -- --------------------------------------------------------
 
@@ -129,6 +137,24 @@ INSERT INTO `noticia_etiqueta` (`id_noticia`, `id_etiqueta`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `palabras`
+--
+
+CREATE TABLE `palabras` (
+  `palabra` varchar(350) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `palabras`
+--
+
+INSERT INTO `palabras` (`palabra`) VALUES
+('tonto'),
+('Donald Trump');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -201,7 +227,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `etiquetas`
 --
