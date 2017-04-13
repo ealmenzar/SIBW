@@ -60,8 +60,8 @@ function ValidateAuthor(e,idError,classError){
 	}
 }
 function ValidateEmail(e, idError, classError){
-	var regex=/[^\ ]*@[^\ ]*\.[^\ ]+)/i;
-	if(regex.test(e.value)){
+	var regex=/([^\ ]*@[^\ ]*\.[^\ ]+)/i;
+	if(!regex.test(e.value)){
 		RemoveClass(classError,idError);
 	}else{
 		len=e.value.match(regex)[0].length;

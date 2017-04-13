@@ -65,10 +65,10 @@ class Noticia {
                     Por favor, siga las reglas de la página web y no comparta información personal, como correos, números de teléfono... Y NO INSULTE
                     </p>
                         <form onsubmit='return SubmitComment(\"author\",\"email\",\"comment\",\"idNot\",\"comments\")'>
-                            <input type='text' placeholder='Nombre' id='author'  onkeyup='ValidateAuthor(this,\"show\",\"error-1\")'><br>
-                            <input type='text' placeholder='Email' id='email' onkeyup='ValidateEmail(this,\"show\",\"error-2\")'><br>
-                            <input type='hidden' id='idNot' value='$this->id'>
-                            <textarea placeholder='Escribe aquí tu comentario...' id='comment' onkeyup='ValidateComment(this,\"show\",\"error-2\")'></textarea><br>
+                            <input type='text' placeholder='Nombre' id='author'  onkeyup='ValidateAuthor(this,\"show\",\"error-1\")' required><br>
+                            <input type='email' placeholder='Email' id='email' required><br>
+                            <input type='hidden' id='idNot' value='$this->id' required>
+                            <textarea placeholder='Escribe aquí tu comentario...' id='comment' onkeyup='ValidateComment(this,\"show\",\"error-2\")' required></textarea><br>
                             <input type='submit' class='comment-btn' value='Enviar Comentario'>
                         </form>";
                     

@@ -338,7 +338,7 @@ ul{
     text-align: center;
 }
 
-#coment-block form input[type="text"]{
+#coment-block form input[type="text"],#coment-block form input[type="email"]{
     width: 90%;
     margin: 5px 5%;
     height: 25px;
@@ -479,6 +479,12 @@ ul{
     cursor:pointer;
 }
 
+.grill{
+    display: inline-block;
+    width: 160px;
+    height: 220px;
+}
+
 .gallery {
     margin: 5px;
     margin-left: 20px;
@@ -504,8 +510,6 @@ ul{
 .pcontenido{
     column-count: 2;
 }
-
-
-
-
-
+.arrow{
+    margin:auto 70px;
+}
