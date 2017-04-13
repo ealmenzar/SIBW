@@ -358,8 +358,9 @@ ul{
 }
 
 #print-logo{
-    text-align: right;
+    text-align: left;
     color: rgba(34, 34, 34, 0.44);
+    margin-right: 10%;
     margin-right: 5%;
     font-size: larger;
 }
@@ -369,7 +370,7 @@ ul{
 #print-logo p{
     font-size: small;
     color: rgba(18, 0, 34, 0.66);
-    text-align: right;
+    text-align: left;
 }
 
 .login{
@@ -477,15 +478,32 @@ ul{
     right: -5px;
     cursor:pointer;
 }
-    
 
-/*
-*QUE FUNCIONE EN DOS NAVEGADORES
-*QUE AL HACER Crtl + ó Ctrl - LAS IMÁGENES TAMBIÉN AUMENTEN O DISMINUYAN
-ARREGLAR EL PIE DE PÁGINA (ACCESO A REDES SOCIALES, DERECHOS...)
+.gallery {
+    margin: 5px;
+    margin-left: 20px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 160px;
+}
 
-!! INCLUIR TODOS LOS meta
- */
+.gallery:hover {
+    border: 1px solid #777;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+.desc {
+    padding: 15px;
+    text-align: center;
+}
+
+.pcontenido{
+    column-count: 2;
+}
 
 
 

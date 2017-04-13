@@ -91,7 +91,7 @@ class Noticia {
 	                $this->contenido
 	                <div id='bottom-new'>
 	                    <div >
-	                        <a href='noticia_imprimir.html'>
+	                        <a href='noticia_imprimir.php?idNew=$this->id'>
 	                            <img src='img/print.png'>
 	                        </a>
 	                        <button class='comment-btn' onclick='Toggle(\"show\",\"coment-block\")'>Comentar</button>
@@ -167,6 +167,29 @@ class Noticia {
 					</div>";
 		}
 
+    }
+
+    function showPrintedNew(){
+        if($this->isSet){
+            $exp='/<iframe.*src="([^\"]*)".*<\/iframe>/i';
+            $sustitución = '$1';
+            $sust=preg_replace($exp,$sustitución, $this->contenido);
+            return "<h1 style='font-size: xx-large'> $this->titulo </h1>
+            <h2> $this->grupo </h2>
+            <p>
+            <h4>$this->frase</h4>
+            <div id='autor'>
+                <address>por $this->autor</address>
+                    Fecha de publicación: $this->publicacion
+                    Fecha de modificación: $this->modificacion
+            </div>
+            </p>
+        
+            <img src='$this->portada' style='width: 100%; height: 60%'>
+            <div class='pcontenido'>
+            $sust
+            </div>";
+        }
     }
 }
 ?>
