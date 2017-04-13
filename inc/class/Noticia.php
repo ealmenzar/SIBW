@@ -23,7 +23,7 @@ class Noticia {
     }
 
     function setById($id) { 
-    	//comprobacion id
+    	$id=str_replace("'", "\'", $id);
         $query="SELECT * FROM noticias WHERE id='$id' ";
     	$result=$this->link->query($query);
     	if($obj=$result->fetch_object()){
@@ -33,7 +33,8 @@ class Noticia {
 
     function getComments($limit){
 	    if($this->isSet) {
-            $query = "SELECT * FROM comentarios WHERE id_noticia='$this->id' ORDER BY fecha ASC ";
+	    	$id=str_replace("'", "\'", $this->id);
+            $query = "SELECT * FROM comentarios WHERE id_noticia='$id' ORDER BY fecha ASC ";
             $result = $this->link->query($query);
             $this->comments = array();
             $i = 0;
@@ -46,31 +47,35 @@ class Noticia {
         }
     }
 
-    function showFullNew() { 
+    function showFullNew($isUser) { 
     	if($this->isSet){
-    	    $str="";
+    	    $str="<aside id='coment-block'>";
     	    if(isset($this->comments)){
-                    $str.="<aside id='coment-block'>
-                            <ul id='comments'>";
-                    foreach ($this->comments as $Com){
-                            $str.= $Com->showComment();
-                    }
-                    $str.= "</ul>
-                        <p id='error-1' class='error'>
-                        Por favor, no se haga pasar por parte del staff de la página web
-                        </p>
-                            <p id='error-2' class='error'>
-                        Por favor, siga las reglas de la página web y no comparta información personal, como correos, números de teléfono... Y NO INSULTE
-                        </p>
-                            <div>
-                                <input type='text' placeholder='Nombre' id='author' onkeyup='ValidateAuthor(this,\"show\",\"error - 1\")'><br>
-                                <input type='text' placeholder='Email' id='email' onkeyup='ValidateComment(this,\"show\",\"error - 2\")'><br>
-                                <textarea placeholder='Escribe aquí tu comentario...' id='comment' onkeyup='ValidateComment(this,\"show\",\"error - 2\")'></textarea><br>
-                                <button class='comment-btn' onclick='SubmitComment(\"author\",\"email\",\"comment\",\"comments\")'>Enviar Comentario</button>
-                            </div>
+                $str.="
+                    <ul id='comments'>";
+                foreach ($this->comments as $Com){
+                    $str.= $Com->showComment();
+                }
+                $str.= "</ul>";
+                if($isUser){
+                	$str.="<p id='error-1' class='error'>
+                    Por favor, no se haga pasar por parte del staff de la página web
+                    </p>
+                        <p id='error-2' class='error'>
+                    Por favor, siga las reglas de la página web y no comparta información personal, como correos, números de teléfono... Y NO INSULTE
+                    </p>
+                        <form onsubmit='return SubmitComment(\"author\",\"email\",\"comment\",\"idNot\",\"comments\")'>
+                            <input type='text' placeholder='Nombre' id='author'  onkeyup='ValidateAuthor(this,\"show\",\"error-1\")'><br>
+                            <input type='text' placeholder='Email' id='email' onkeyup='ValidateEmail(this,\"show\",\"error-2\")'><br>
+                            <input type='hidden' id='idNot' value='$this->id'>
+                            <textarea placeholder='Escribe aquí tu comentario...' id='comment' onkeyup='ValidateComment(this,\"show\",\"error-2\")'></textarea><br>
+                            <input type='submit' class='comment-btn' value='Enviar Comentario'>
+                        </form>";
+                    
                         
-                            </aside>";
-                    }
+                }
+            }
+            $str.="</aside>";
                     $str.="<h1 style='font-size: xx-large'> $this->titulo </h1>
 	                <h2> $this->grupo </h2>
 	                <p>
@@ -127,7 +132,7 @@ class Noticia {
 
     function showShortNew() { 
     	if($this->isSet){
-    		$phraseCut=(strlen($this->parrafo)<=400)?$this->parrafo : substr ($this->parrafo, 0,400)."...";
+    		$phraseCut=(strlen($this->parrafo)<=200)?$this->parrafo : substr ($this->parrafo, 0,200)."...";
 	    	return "<h2> $this->titulo </h2>
 	                <h3> $this->grupo </h3>
 	                <a href='index.php?tpl=New&idNew=$this->id'>

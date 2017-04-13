@@ -1,11 +1,11 @@
     <header>
         <nav id="top-nav">
-            <a href="portada.html">
+            <a href="index.php">
                 <img src="img/rreflektor.png">
             </a>
             <ul>
                 <li class="no-log">
-                    <a href="portada.html">PORTADA
+                    <a href="index.php">PORTADA
                         <img src="img/noun_772443_cc.png"></a>
                 </li>
                 <li class="no-log">
@@ -17,7 +17,7 @@
                         <img src="img/concert.png"></a>
                 </li>
                 <li class="no-log">
-                    <a href="#~">FESTIVALES
+                    <a href="index.php?tpl=Sections">SECCIONES
                         <img src="img/festival.png"></a>
                 </li>
             </ul>

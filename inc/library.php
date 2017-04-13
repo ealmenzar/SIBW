@@ -1,7 +1,7 @@
 <?php
-include("inc/class/Noticia.php");
-include("inc/class/User.php");
-include("inc/class/Comentario.php");
+include($_SERVER["DOCUMENT_ROOT"]."/SIBW/inc/class/Noticia.php");
+include($_SERVER["DOCUMENT_ROOT"]."/SIBW/inc/class/User.php");
+include($_SERVER["DOCUMENT_ROOT"]."/SIBW/inc/class/Comentario.php");
 function conectar(){
 	$db = new mysqli('127.0.0.1', 'reflektor', '8pHqgP3PbUVzM7eh', 'reflektor_sibw');
 	if ($db->connect_errno) {
@@ -39,7 +39,7 @@ function getLastNew($link){
 }
 
 function getNews($link,$offset,$limit,$section,&$existNext=null){
-	//$sqlinjection section
+	$section=str_replace("'", "\'", $section);
 	$limit2=$limit+1;
 	if($section==0){
 		$query="SELECT * FROM noticias ORDER BY id DESC LIMIT $limit2 OFFSET $offset ";
@@ -59,7 +59,6 @@ function getNews($link,$offset,$limit,$section,&$existNext=null){
 	$existNext=$result->fetch_object();
 	return $arrayNot;
 }
-
 function getAllSections($link){
 	$query="SELECT * FROM etiquetas ORDER BY id DESC";
 	$result=$link->query($query);
@@ -74,6 +73,7 @@ function getAllSections($link){
 }
 
 function getConnectedNews($link, $limit, $id){
+	$id=str_replace("'", "\'", $id);
     $query="SELECT * FROM noticias INNER JOIN noticia_etiqueta ON noticia_etiqueta.id_noticia=noticias.id 
 WHERE noticia_etiqueta.id_etiqueta in (SELECT id_etiqueta from noticia_etiqueta WHERE id_noticia='$id') 
 AND noticias.id<>'$id' GROUP BY noticias.id ORDER BY RAND() LIMIT $limit";
@@ -87,5 +87,28 @@ AND noticias.id<>'$id' GROUP BY noticias.id ORDER BY RAND() LIMIT $limit";
         $i++;
     }
     return $arrayCon;
+}
+function getBanWord($link){
+	$query="SELECT * FROM palabras";
+	$result=$link->query($query);
+	$words=array();
+	$i=0;
+	while($obj=$result->fetch_object()){
+		$words[$i]=$obj->palabra;
+		$i++;
+	}
+	return $words;
+}
+function saveClick($link,$anuncio){
+	$anuncio=str_replace("'", "\'", $anuncio);
+	if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    } else {
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+    $query="INSERT INTO clicks (click, ip, anuncio, fecha) VALUES (NULL, '$ip', '$anuncio', NOW())";
+    $link->query($query);
 }
 ?>
