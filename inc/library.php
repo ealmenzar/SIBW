@@ -37,23 +37,25 @@ function getLastNew($link){
 	}
 }
 
-function getNews($link,$offset,$limit,$section){
+function getNews($link,$offset,$limit,$section,&$existNext=null){
 	//$sqlinjection section
+	$limit2=$limit+1;
 	if($section==0){
-		$query="SELECT * FROM noticias ORDER BY id DESC LIMIT $limit OFFSET $offset ";
+		$query="SELECT * FROM noticias ORDER BY id DESC LIMIT $limit2 OFFSET $offset ";
 	}else{
 		$query="SELECT * FROM noticias INNER JOIN noticia_etiqueta ON noticia_etiqueta.id_noticia=noticias.id 
-		WHERE noticia_etiqueta.id_etiqueta='$section' ORDER BY noticias.id DESC LIMIT $limit OFFSET $offset";
+		WHERE noticia_etiqueta.id_etiqueta='$section' ORDER BY noticias.id DESC LIMIT $limit2 OFFSET $offset";
 	}
 	$result=$link->query($query);
 	$arrayNot=array();
 	$i=0;
-	while($obj=$result->fetch_object()){
+	while($i<$limit && $obj=$result->fetch_object()){
 		$Not=new Noticia($link);
 		$Not->setByMySQLObject($obj);
 		$arrayNot[$i]=$Not;
 		$i++;
 	}
+	$existNext=$result->fetch_object();
 	return $arrayNot;
 }
 function getAllSections($link){

@@ -10,15 +10,28 @@
             echo trim($str,",");
         }else{
             echo "<h2>".$_GET["section"]."</h2>";
-            $offset=0;
-            $limit=9;
-            $arrayNews=getNews($link,$offset,$limit,$dict[$_GET["section"]]);
+            $pag=(isset($_GET["pagina"]) && ((int) $_GET["pagina"])>0)?(int) $_GET["pagina"]:1;
+            $numPag=3;
+            $offset=($pag-1)*$numPag;
+            
+            $arrayNews=getNews($link,$offset,$numPag,$dict[$_GET["section"]],$next);
+            if(count($arrayNews)==0){
+                $pag=1;
+                $offset=($pag-1)*$numPag;
+                $arrayNews=getNews($link,$offset,$numPag,$dict[$_GET["section"]],$next);
+            }
             if(count($arrayNews)>0){
                 echo "<ul class='news-list'>";
                 foreach ($arrayNews as $New) {
                     echo "<li>".$New->showShortNew()."</li>";
                 }
                 echo "</ul>";
+            }
+            if($pag>1){
+                echo "<a href='index.php?tpl=Sections&section=".$_GET["section"]."&pagina=".($pag-1)."'>Anterior</a>";
+            }
+            if($next){
+                echo "<a href='index.php?tpl=Sections&section=".$_GET["section"]."&pagina=".($pag+1)."'>Siguiente</a>";
             }
         }
     ?>
