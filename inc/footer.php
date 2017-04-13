@@ -30,3 +30,25 @@
         </p>
     </div>
 </footer>
+<script type="text/javascript">
+    function ValidateComment(e,idError,classError){
+    <?php echo "var regex=/(".implode(getBanWord($link),"|")."|[0-9]{9}|[^\ ]*@[^\ ]*\.[^\ ]+)/i"?>;
+    if(regex.test(e.value)){
+        len=e.value.match(regex)[0].length;
+        e.value=e.value.replace(regex,GenerateStars(len));
+        AddClass(classError,idError);
+    }else{
+        RemoveClass(classError,idError);
+    }
+    
+}
+ function ClickCommercial(commercial){
+    var http = new XMLHttpRequest();
+    var url = "webService/saveEstadistics.php";
+    var params = "anuncio="+commercial;
+    http.open("POST", url, true);
+    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    http.send(params);
+
+ }
+</script>

@@ -270,7 +270,6 @@ ul{
     text-align: center;
     width: 80%;
     font-family: "Times New Roman";
-    background-color: #ffffff;
 }
 .comment-btn{
     width: 150px;
@@ -334,18 +333,18 @@ ul{
     right: 0;
 }
 
-#coment-block div{
+#coment-block form{
     width: 100%;
     text-align: center;
 }
 
-#coment-block div input[type="text"]{
+#coment-block form input[type="text"]{
     width: 90%;
     margin: 5px 5%;
     height: 25px;
 }
 
-#coment-block div textarea{
+#coment-block form textarea{
     width: 90%;
     margin: 5px 5%;
     height: 150px;

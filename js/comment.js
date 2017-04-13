@@ -68,21 +68,23 @@ function ValidateEmail(e, idError, classError){
 		AddClass(classError,idError);
 	}
 }
-function ValidateComment(e,idError,classError){
-	var regex=/(tonto|idiota|cateto|inutil|inútil|Donald Trump|[0-9]{9}|[^\ ]*@[^\ ]*\.[^\ ]+)/i;
-	if(regex.test(e.value)){
-		len=e.value.match(regex)[0].length;
-		e.value=e.value.replace(regex,GenerateStars(len));
-		AddClass(classError,idError);
-	}else{
-		RemoveClass(classError,idError);
-	}
-}
-function SubmitComment(idAuthor,idEmail,idComment,idlistComment){
+function SubmitComment(idAuthor,idEmail,idComment,idHidden,idlistComment){
+	var http = new XMLHttpRequest();
 	var authorContent=document.getElementById(idAuthor).value;
 	var commentContent=document.getElementById(idComment).value;
+	var emailContent=document.getElementById(idEmail).value;
+	var idNot=document.getElementById(idHidden).value;
+	var url = "webService/saveComment.php";
+	var params = "author="+authorContent+"&email="+emailContent+"&comment="+commentContent+"&idNot="+idNot;
+	http.open("POST", url, true);
+
+	//Send the proper header information along with the request
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+	http.send(params);
 	document.getElementById(idlistComment).innerHTML+="<li><b>Autor:</b> "+authorContent+"<br><b>Fecha:</b> "+GetToday()+" <b>Hora:</b> "+GetNow()+"<br><p>"+commentContent+"</p></li>";
 	document.getElementById(idAuthor).value="";
 	document.getElementById(idEmail).value="";
 	document.getElementById(idComment).value="";
+	return false;
 }

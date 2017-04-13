@@ -19,7 +19,7 @@ class User {
     }
 
     function setByEmail($email) { 
-    	//comprobacion email
+    	$email=str_replace("'", "\'", $email);
         $query="SELECT * FROM usuarios WHERE email='$email' ";
     	$result=$this->link->query($query);
     	if($obj=$result->fetch_object()){
