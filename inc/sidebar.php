@@ -7,7 +7,7 @@
         foreach ($arrayCon as $Con) {
             echo "<h2>".$Con->titulo."</h2>";
             echo "<h3>".$Con->grupo."</h3>";
-            echo "<a href='#~'><img src='".$Con->portada."'style='max-width: 80%'></a>";
+            echo "<a href='index.php?tpl=New&idNew=".$Con->id."'><img src='".$Con->portada."'style='max-width: 80%'></a>";
          }
     } ?>
 
