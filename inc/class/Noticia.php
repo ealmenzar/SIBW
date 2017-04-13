@@ -46,7 +46,7 @@ class Noticia {
 	                </div>
 	                </p>
 	                <div class='main-img'>
-	                    <img src='$this->portada' style='width: 35%'>
+	                    <img src=\"$this->portada\" style=\"width: 35%\">
 	                    $this->spotify
 	                    <p>$this->pie</p>
 	                </div>
@@ -56,12 +56,12 @@ class Noticia {
 	                        <a href='noticia_imprimir.html'>
 	                            <img src='img/print.png'>
 	                        </a>
-	                        <button class='comment-btn' onclick='Toggle('show','coment-block')'>Comentar</button>
+	                        <button class='comment-btn' onclick='Toggle(\"show\",\"coment-block\")'>Comentar</button>
 	                    </div>
 	                    <div class='social'>
 	                    <ul>
 				            <li>
-		                    <a onclick=\"show('modal-new')\">
+		                    <a onclick='show(\"modal-new\")'>
 				                    <img src='img/facebook.png'>
 				                </a>
 				            </li>
