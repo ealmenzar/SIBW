@@ -32,7 +32,13 @@
 </footer>
 <script type="text/javascript">
     function ValidateComment(e,idError,classError){
-    <?php echo "var regex=/(".implode(getBanWord($link),"|")."|[0-9]{9}|[^\ ]*@[^\ ]*\.[^\ ]+)/i"?>;
+    <?php 
+	$words=getBanWord($link);
+	foreach($words as $key => $value){
+		$words[$key]="($| )".$value."( |^)";
+	}
+	echo "var regex=/(".implode($words,"|")."|<[^b].*>|[0-9]{9}|[^\ ]*@[^\ ]*\.[^\ ]+)/i";
+	?>;
     if(regex.test(e.value)){
         len=e.value.match(regex)[0].length;
         e.value=e.value.replace(regex,GenerateStars(len));
