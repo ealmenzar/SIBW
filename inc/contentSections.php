@@ -2,20 +2,19 @@
         echo "<h1>Secciones</h1>";
         $dict=getAllSections($link);
         if(!isset($dict[$_GET["section"]])){
-            echo "La sección indicada no existe, las siguientes son existentes: ";
+            echo "La sección indicada no existe, las siguientes son existentes:<br> ";
             $str="";
             foreach ($dict as $name => $id) {
-                $str.="<a href=\"index.php?tpl=Sections&section=$name\">$name</a>,";
+                $str.=" <a class='subsection-btn' href=\"index.php?tpl=Sections&section=$name\">$name</a> ";
             };
-            echo trim($str,",");
+            echo $str;
         }else{
             echo "<h2>".$_GET["section"]."</h2>";
-            echo "Secciones: ";
             $str="";
             foreach ($dict as $name => $id) {
-                $str.="<a href=\"index.php?tpl=Sections&section=$name\">$name</a>,";
+                $str.=" <a class='subsection-btn' href=\"index.php?tpl=Sections&section=$name\">$name</a> ";
             };
-            echo trim($str,",");
+            echo $str;
             $pag=(isset($_GET["pagina"]) && ((int) $_GET["pagina"])>0)?(int) $_GET["pagina"]:1;
             $numPag=6;
             $offset=($pag-1)*$numPag;

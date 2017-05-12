@@ -72,6 +72,21 @@ function getAllSections($link){
 	return $arrayTag;
 }
 
+function getPubli($link){
+    $query = "SELECT * FROM publicidad ORDER BY id DESC";
+    $result=$link->query($query);
+    $arrayTag=array();
+    $i=0;
+    while($obj=$result->fetch_object()){
+        $arrayTag[$i]["id"]=$obj->id;
+        $arrayTag[$i]["anuncio"]=$obj->anuncio;
+        $arrayTag[$i]["titulo"]=$obj->titulo;
+        $arrayTag[$i]["img"]=$obj->imagen;
+        $i++;
+    }
+    return $arrayTag;
+}
+
 function getConnectedNews($link, $limit, $id){
 	$id=str_replace("'", "\'", $id);
     $query="SELECT * FROM noticias INNER JOIN noticia_etiqueta ON noticia_etiqueta.id_noticia=noticias.id 
@@ -108,7 +123,7 @@ function saveClick($link,$anuncio){
     } else {
         $ip = $_SERVER['REMOTE_ADDR'];
     }
-    $query="INSERT INTO clicks (click, ip, anuncio, fecha) VALUES (NULL, '$ip', '$anuncio', NOW())";
+    $query="INSERT INTO clicks (click, ip, id_publi, fecha) VALUES (NULL, '$ip', '$anuncio', NOW())";
     $link->query($query);
 }
 ?>
