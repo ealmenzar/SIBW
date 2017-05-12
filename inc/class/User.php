@@ -15,6 +15,7 @@ class User {
         $this->nacimiento=$obj->nacimiento;
         $this->registro=$obj->registro;
         $this->ciudad=$obj->ciudad;
+        $this->permiso=$obj->permiso;
         $this->isSet=true;
     }
 
@@ -25,7 +26,11 @@ class User {
     	if($obj=$result->fetch_object()){
     		$this->setByMySQLObject($obj);
     	}
-    } 
+    }
+
+    function getName(){
+        return $this->nombre;
+    }
 
     function isDefined(){
     	return $this->isSet;

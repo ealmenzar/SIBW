@@ -59,6 +59,23 @@ function getNews($link,$offset,$limit,$section,&$existNext=null){
 	$existNext=$result->fetch_object();
 	return $arrayNot;
 }
+
+function getComments($link,$offset,$limit,&$existNext=null){
+	$limit2=$limit+1;
+	$query="SELECT * FROM comentarios ORDER BY fecha DESC LIMIT $limit2 OFFSET $offset ";
+	$result=$link->query($query);
+	$arrayCom=array();
+	$i=0;
+	while($i<$limit && $obj=$result->fetch_object()){
+		$Com=new Comentario($link);
+		$Com->setByMySQLObject($obj);
+		$arrayCom[]=$Com;
+		$i++;
+	}
+	$existNext=$result->fetch_object();
+	return $arrayCom;
+}
+
 function getAllSections($link){
 	$query="SELECT * FROM etiquetas ORDER BY id DESC";
 	$result=$link->query($query);

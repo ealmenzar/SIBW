@@ -1,3 +1,22 @@
+<?php if(isset($_SESSION["user"]) && unserialize($_SESSION["user"])->permiso === "jefe"):?>
+<ul>
+    <li>
+        <a href="index.php?tpl=CommentAg">Gestor de comentarios</a>
+    </li>
+    <li>
+        <a href="#~">Gestor de noticias</a>
+    </li>
+    <li>
+        <a href="#~">Gestor de publicidad </a>
+    </li>
+    <li>
+        <a href="#~">Gestor de secciones</a>
+    </li>
+    <li>
+        <a href="#~">Organizador de la página de inicio</a>
+    </li>
+</ul>
+<?php endif;?>
 <?php if($tpl == 'New'):
 
     $limit=5;

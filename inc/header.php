@@ -22,15 +22,12 @@
                 </li>
             </ul>
             <?php
-            if(isset($_SESSION["name"])){
+            if(isset($_SESSION["user"])){
+                $usr=unserialize($_SESSION["user"]);
                 echo "<ul class=\"bien\">
                         <li class=\"venido\">
-                            Bienvenido ".$_SESSION["name"];"
-                        </li>
-                      </ul>";
-                echo "<ul>
-                        <li>
-                            <a href='index.php?tpl=LogIn&logout'><input type='submit' value='Log out'></a>
+                            Bienvenido ".($usr->nombre)."
+                            <a href='index.php?tpl=LogIn&logout'><input style='width:105px' type='submit' value='Log out'></a>
                         </li>
                       </ul>";
             }else{

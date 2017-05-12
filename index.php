@@ -5,9 +5,9 @@ include("inc/library.php");
 $link=conectar();
 $tpl=isset($_GET["tpl"])? $_GET["tpl"] :"Home";
 
-if($tpl=="LogIn" and isset($_SESSION["name"])){
+if($tpl=="LogIn" and isset($_SESSION["user"])){
     if(isset($_GET["logout"])){
-        unset($_SESSION["name"]);
+        unset($_SESSION["user"]);
         session_destroy();
     }else{
         $tpl="Home";

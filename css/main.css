@@ -385,14 +385,28 @@ ul{
     border-radius: 15px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.edit form{
+    width: 500px;
+    background-color: #fff;
+    padding: 30px 0;
+    margin:  100px auto 0;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
-.login form input{
+.login form input,.edit form input{
     width: 200px;
     height: 30px;
     margin: 10px 0;
 }
+.edit form textarea{
+    width: 400px;
+    height: 200px;
+    margin: 10px 0;
+    resize: false;
+}
 
-.login form input[type="submit"]{
+.login form input[type="submit"],.edit form input[type="submit"]{
     width: 150px;
     height: 30px;
     border: 0px;
@@ -512,4 +526,15 @@ ul{
 }
 .arrow{
     margin:auto 70px;
+}
+.white-table{
+    width: 80%;
+    min-width: 700px;
+    background-color: #fff;
+    border-collapse: collapse;
+    margin: auto;
+}
+.white-table td,th{
+    border:1px solid;
+    vertical-align: middle;
 }

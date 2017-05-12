@@ -4,7 +4,7 @@ if(isset($_POST["login-email"],$_POST["login-pwd-encrypted"])){
     $usr->setByEmail($_POST["login-email"]);
     if($usr->isDefined()){
         if($usr->testPwd($_POST["login-pwd-encrypted"])){
-            $_SESSION["name"]=$usr->nombre;
+            $_SESSION["user"]=serialize($usr);
             header("location:index.php");
         }else{
             $error="La contraseña es incorrecta";
