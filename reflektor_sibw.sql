@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-04-2017 a las 20:55:30
+-- Tiempo de generación: 17-04-2017 a las 09:44:45
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -55,7 +55,9 @@ CREATE TABLE `comentarios` (
 
 INSERT INTO `comentarios` (`autor`, `ip`, `id`, `fecha`, `contenido`, `email`, `id_noticia`) VALUES
 ('Yo', '1234', 1, '2017-04-13 00:00:00', 'HOla', 'm@m', 5),
-('Yooo', '234', 2, '2017-04-13 00:00:00', 'hola hola', 'm@m', 5);
+('Yooo', '234', 2, '2017-04-13 00:00:00', 'hola hola', 'm@m', 5),
+('Marina', '::1', 3, '2017-04-16 19:06:08', 'Hola! Me encanta este disco :)', 'm@m.com', 9),
+('Iván', '::1', 4, '2017-04-16 19:06:51', 'A mí también, es genial!', 'i@m.com', 9);
 
 -- --------------------------------------------------------
 
@@ -263,7 +265,7 @@ ALTER TABLE `clicks`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `etiquetas`
 --

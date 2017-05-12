@@ -34,9 +34,6 @@
     function ValidateComment(e,idError,classError){
     <?php 
 	$words=getBanWord($link);
-	foreach($words as $key => $value){
-		$words[$key]="($| )".$value."( |^)";
-	}
 	echo "var regex=/(".implode($words,"|")."|<[^b].*>|[0-9]{9}|[^\ ]*@[^\ ]*\.[^\ ]+)/i";
 	?>;
     if(regex.test(e.value)){
