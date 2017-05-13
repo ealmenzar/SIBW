@@ -74,7 +74,7 @@ class Noticia {
     }
 
         function showAddForm(){
-            return "<div class='edit'>
+            $ret="<div class='edit'>
                     <form method='post' action=''  enctype=\"multipart/form-data\">
                         <input type=\"text\" name='titulo' placeholder='Titulo' required><br>
                         <input type=\"text\" name='grupo' placeholder='Grupo' required><br>
@@ -87,9 +87,19 @@ class Noticia {
                         </div>
                         <textarea name='spotify' placeholder='spotify' required></textarea><br>
                         <textarea name='parrafo' placeholder='parrafo' required></textarea><br>
+                        <select name='subseccion' required>";
+            $sub=getAllTags($this->link);
+            foreach ($sub as $value) {
+                if($value->relacion!=0){
+                    $ret.="<option value='".$value->id."-".$value->relacion."'>".$sub[$value->relacion]->nombre."-".$value->nombre."</option>";
+                }
+                
+            }
+            $ret.="</select><br>
                         <input type=\"submit\" value='Guardar'><br>
                     </form>
                     </div>";
+            return $ret;
     }
 
     function showNewLine($isJefe){
@@ -159,11 +169,20 @@ class Noticia {
                 $estado=str_replace("'", "\'", $this->estado);
                 $query="INSERT INTO noticias (id, titulo, grupo, frase, autor, publicacion, modificacion, portada, pie, spotify, parrafo, contenido, estado) VALUES (NULL, '$titulo', '$grupo', '$frase', '$autor', NOW(), NOW(), '$portada', '$pie', '$contenido', '$spotify', '$parrafo', '$estado');";
                 $this->link->query($query);
+                $this->id=$this->link->insert_id;
             }
         }
         return $this;
     }
-
+    function associate($ids){
+        echo "$query";
+        foreach ($ids as $id) {
+            $arrayPair[]="(".$this->id.",$id)";
+        }
+        $query="INSERT INTO noticia_etiqueta (id_noticia, id_etiqueta) VALUES ".implode(",",$arrayPair);
+        echo $query;
+        $this->link->query($query);
+    }
     function remove(){
         if(isset($this->id)){
             $id=str_replace("'", "\'", $this->id);
@@ -172,7 +191,7 @@ class Noticia {
         }
     }
     function showFullNew($isUser) { 
-    	if($this->isSet){
+    	if($this->isSet && $this->estado=="publicado"){
     	    $str="<aside id='coment-block'>";
     	    if(isset($this->comments)){
                 $str.="
@@ -200,7 +219,11 @@ class Noticia {
                 }
             }
             $str.="</aside>";
-                    $str.="<h1 style='font-size: xx-large'> $this->titulo </h1>
+                    if(isset($_SESSION["user"]) && ((unserialize($_SESSION["user"])->permiso) == "jefe")){
+                        $str.='<a style="display:inline-block" href="index.php?tpl=NewsAg&edit='.$this->id.'">Editar</a>';
+                    }
+                    $str.="
+                    <h1 style='font-size: xx-large'> $this->titulo </h1>
 	                <h2> $this->grupo </h2>
 	                <p>
 	                <h4>
@@ -255,7 +278,7 @@ class Noticia {
     } 
 
     function showShortNew() { 
-    	if($this->isSet){
+    	if($this->isSet && $this->estado=="publicado"){
     		$phraseCut=(strlen($this->parrafo)<=200)?$this->parrafo : substr ($this->parrafo, 0,200)."...";
 	    	return "<h2> $this->titulo </h2>
 	                <h3> $this->grupo </h3>
@@ -272,7 +295,7 @@ class Noticia {
         }
     } 
     function showMainNew(){
-    	if($this->isSet){
+    	if($this->isSet && $this->estado=="publicado"){
     		return "<div id='main-new'>
 				    	<div class='two-columns'>
 					        <div class='row'>

@@ -28,12 +28,13 @@ if (isset($_GET["edit"]) || isset($_GET["add"])) {
         $not->contenido=$_POST["contenido"];
         $not->spotify=$_POST["spotify"];
         $not->parrafo=$_POST["parrafo"];
-        $not->estado=($per=="jefe")?"publicado":"pendiente";
+        $not->estado=isset($_POST["estado"])?$_POST["estado"]:(($per=="jefe")?"publicado":"pendiente");
         $not->save();
         if(isset($_GET["edit"])){
             echo "<p>Modificado correctamente</p>";
             echo $not->showEditForm();
         }else{
+            $not->associate(explode("-",$_POST["subseccion"]));
             header("location:index.php?tpl=NewsAg");
         }
         
@@ -49,7 +50,7 @@ if (isset($_GET["edit"]) || isset($_GET["add"])) {
         $pag=1;
     }
     $numPorPag=30;
-    $news=getNews($link,($pag-1)*$numPorPag,$numPorPag,"all",$sig);
+    $news=getAllNews($link,($pag-1)*$numPorPag,$numPorPag,"all",$sig);
     $isJefe=$per=="jefe";
     ?>
     <a class="add-btn" href="index.php?tpl=NewsAg&add=1">Añadir Noticia</a>

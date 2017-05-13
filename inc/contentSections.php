@@ -1,6 +1,6 @@
     <?php 
         echo "<h1>Destacados</h1>";
-        $dict=getAllSections($link);
+        $dict=getAllSubSections($link);
         if(!isset($dict[$_GET["section"]])){
             echo "La sección indicada no existe, las siguientes son existentes:<br> ";
             $str="";

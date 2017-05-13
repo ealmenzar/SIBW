@@ -31,7 +31,7 @@ function convertDateHumanToSystem($date){
 }
 
 function getLastNew($link){
-	$query="SELECT * FROM noticias ORDER BY id DESC";
+	$query="SELECT * FROM noticias WHERE estado='publicado' ORDER BY orden ASC";
 	$result=$link->query($query);
 	if($obj=$result->fetch_object()){
 		$Not=new Noticia($link);
@@ -43,6 +43,27 @@ function getLastNew($link){
 }
 
 function getNews($link,$offset,$limit,$section,&$existNext=null){
+	$section=str_replace("'", "\'", $section);
+	$limit2=$limit+1;
+	if($section==0){
+		$query="SELECT * FROM noticias WHERE estado='publicado' ORDER BY orden ASC LIMIT $limit2 OFFSET $offset ";
+	}else{
+		$query="SELECT * FROM noticias WHERE estado='publicado' ORDER BY orden ASC INNER JOIN noticia_etiqueta ON noticia_etiqueta.id_noticia=noticias.id 
+		WHERE noticia_etiqueta.id_etiqueta='$section' ORDER BY noticias.id DESC LIMIT $limit2 OFFSET $offset";
+	}
+	$result=$link->query($query);
+	$arrayNot=array();
+	$i=0;
+	while($i<$limit && $obj=$result->fetch_object()){
+		$Not=new Noticia($link);
+		$Not->setByMySQLObject($obj);
+		$arrayNot[$i]=$Not;
+		$i++;
+	}
+	$existNext=$result->fetch_object();
+	return $arrayNot;
+}
+function getAllNews($link,$offset,$limit,$section,&$existNext=null){
 	$section=str_replace("'", "\'", $section);
 	$limit2=$limit+1;
 	if($section==0){
@@ -80,7 +101,7 @@ function getComments($link,$offset,$limit,&$existNext=null){
 	return $arrayCom;
 }
 
-function getAllSections($link){
+function getAllSubSections($link){
 	$query="SELECT * FROM etiquetas WHERE relacion <> 0 ORDER BY id DESC";
 	$result=$link->query($query);
 	$arrayTag=array();
@@ -90,6 +111,15 @@ function getAllSections($link){
 		$i++;
 	}
 	$arrayTag["Todas"]=0;
+	return $arrayTag;
+}
+function getAllTags($link){
+	$query="SELECT * FROM etiquetas";
+	$result=$link->query($query);
+	$arrayTag=array();
+	while($obj=$result->fetch_object()){
+		$arrayTag[$obj->id]=$obj;
+	}
 	return $arrayTag;
 }
 
@@ -149,7 +179,7 @@ function getPubliById($id, $link){
 
 function getConnectedNews($link, $limit, $id){
 	$id=str_replace("'", "\'", $id);
-    $query="SELECT * FROM noticias INNER JOIN noticia_etiqueta ON noticia_etiqueta.id_noticia=noticias.id 
+    $query="SELECT * FROM noticias WHERE estado='publicado' INNER JOIN noticia_etiqueta ON noticia_etiqueta.id_noticia=noticias.id 
 WHERE noticia_etiqueta.id_etiqueta in (SELECT id_etiqueta from noticia_etiqueta WHERE id_noticia='$id') 
 AND noticias.id<>'$id' GROUP BY noticias.id ORDER BY RAND() LIMIT $limit";
     $result=$link->query($query);
