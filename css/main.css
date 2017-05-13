@@ -400,7 +400,7 @@ ul{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .edit form{
-    width: 500px;
+    width: 80%;
     background-color: #fff;
     padding: 30px 0;
     margin: 0 auto 0;
@@ -408,13 +408,18 @@ ul{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.login form input,.edit form input{
+.login form input{
     width: 200px;
     height: 30px;
     margin: 10px 0;
 }
+.edit form input{
+    width: 50%;
+    height: 30px;
+    margin: 10px 0;
+}
 .edit form textarea{
-    width: 400px;
+    width: 80%;
     height: 200px;
     margin: 10px 0;
     resize: false;
@@ -552,6 +557,11 @@ ul{
     border:1px solid;
     vertical-align: middle;
 }
+.white-table p{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
 
 .subsection-btn{
     color:#000;
@@ -572,6 +582,10 @@ ul{
 .subsection-btn:hover{
     background-color: #c9bcbb;
     color: white;
+}
+.container-wysiwyg{
+    width: 80%;
+    margin: auto;
 }
 .gestor{
     transform: translateX(-20px);
@@ -605,3 +619,10 @@ ul{
     color: #86d49b;
     text-align: center;
 }
+
+
+
+
+/*IVAN
+//////////////////////////////////////////////////////////////////
+MARINA*/

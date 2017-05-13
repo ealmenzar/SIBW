@@ -206,3 +206,12 @@ function submitPass(){
 	document.getElementById("login-pwd").value=GenerateStars(pwdValu.length);
 	document.getElementById("login-pwd-encrypted").value=Encrypt(pwdValu);
 }
+function submitRegister(){
+	var pwdValu = document.getElementById("register-pwd").value;
+	var pwdValu2 = document.getElementById("register-pwd-confirm").value;
+	if(pwdValu==pwdValu2){
+		document.getElementById("register-pwd").value=GenerateStars(pwdValu.length);
+		document.getElementById("register-pwd-confirm").value=GenerateStars(pwdValu.length);
+		document.getElementById("register-pwd-encrypted").value=Encrypt(pwdValu);
+	}
+}

@@ -4,7 +4,7 @@
         <a class="gestor-btn" href="index.php?tpl=CommentAg">Gestor de comentarios</a>
     </li>
     <li>
-        <a class="gestor-btn" href="#~">Gestor de noticias</a>
+        <a class="gestor-btn" href="index.php?tpl=NewsAg">Gestor de noticias</a>
     </li>
     <li>
         <a class="gestor-btn" href="index.php?tpl=PubliAg">Gestor de publicidad </a>
