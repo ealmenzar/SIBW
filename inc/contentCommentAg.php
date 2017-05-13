@@ -7,6 +7,7 @@ if(isset($_GET["remove"])){
     $cmt=new Comentario($link);
     $cmt->setId($_GET["remove"]);
     $cmt->remove();
+    echo "<h2><p class='check-modify'>Borrado correctamente &#10004;</p></h2>";
 }
 if (isset($_GET["edit"])) {
     if(isset($_POST["autor"],$_POST["email"],$_POST["contenido"])){
