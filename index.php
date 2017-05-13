@@ -34,6 +34,18 @@ if($tpl=="New" and !isset($_GET["idNew"])){
         <script type="text/javascript" src="js/md5.js"></script>
         <script type="text/javascript" src="js/utils.js"></script>
         <link rel="stylesheet" href="css/main.css">
+        <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=kr6hn53u5g5h3v5t02qwedo7mqct3zn8c2pdfg02jgf4tlnz"></script>
+        <script>tinymce.init({ 
+            selector:'textarea.wysiwyg' ,
+            menubar: false,
+            height: 300,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code'
+              ],
+            toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+        });</script>
 
         <title>SIBW</title>
     </head>

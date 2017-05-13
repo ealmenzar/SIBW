@@ -25,6 +25,10 @@ function convertDateSystemToHuman($date){
 	$dateObj=new DateTime($date);
 	return $dateObj->format("d/m/Y");
 }
+function convertDateHumanToSystem($date){
+	$dateArray=explode("/",$date);
+	return $dateArray[2]."-".$dateArray[1]."-".$dateArray[0];
+}
 
 function getLastNew($link){
 	$query="SELECT * FROM noticias ORDER BY id DESC";
