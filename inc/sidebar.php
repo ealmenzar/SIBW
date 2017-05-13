@@ -10,7 +10,7 @@
         <a class="gestor-btn" href="index.php?tpl=PubliAg">Gestor de publicidad </a>
     </li>
     <li>
-        <a class="gestor-btn" href="#~">Gestor de secciones</a>
+        <a class="gestor-btn" href="index.php?tpl=SectionAg">Gestor de secciones</a>
     </li>
     <li>
         <a class="gestor-btn" href="#~">Organizador de la página de inicio</a>
