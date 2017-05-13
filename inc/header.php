@@ -9,7 +9,7 @@
                         <img src="img/noun_772443_cc.png"></a>
                 </li>
                 <li class="no-log">
-                    <a href="#~">DESTACADOS
+                    <a href="#~">FESTIVALES
                         <img src="img/noun_580939_cc.png"></a>
                 </li>
                 <li class="no-log">
@@ -17,7 +17,7 @@
                         <img src="img/concert.png"></a>
                 </li>
                 <li class="no-log">
-                    <a href="index.php?tpl=Sections">SECCIONES
+                    <a href="index.php?tpl=Sections">DESTACADOS
                         <img src="img/festival.png"></a>
                 </li>
             </ul>

@@ -57,9 +57,9 @@ class Noticia {
                         <input type=\"text\" name='frase' value='".$this->frase."' required><br>
                         <input type=\"text\" name='autor' value='".$this->autor."' required><br>
                         <input type=\"text\" name='pie' value='".$this->pie."' required><br>
-                        <input type=\"file\" name='portada' required><br>
+                        <input type=\"file\" name='portada'><br>
                         <div class='container-wysiwyg'>
-                        <textarea name='contenido' class='wysiwyg' required>".$this->contenido."</textarea><br>
+                        <textarea name='contenido' class='wysiwyg'>".$this->contenido."</textarea><br>
                         </div>
                         <textarea name='spotify' required>".$this->spotify."</textarea><br>
                         <textarea name='parrafo' required>".$this->parrafo."</textarea><br>
@@ -83,7 +83,7 @@ class Noticia {
                         <input type=\"text\" name='pie' placeholder='Pie' required><br>
                         <input type=\"file\" name='portada' required><br>
                         <div class='container-wysiwyg'>
-                        <textarea name='contenido' class='wysiwyg' placeholder='contenido' required></textarea><br>
+                        <textarea name='contenido' class='wysiwyg' placeholder='contenido'></textarea><br>
                         </div>
                         <textarea name='spotify' placeholder='spotify' required></textarea><br>
                         <textarea name='parrafo' placeholder='parrafo' required></textarea><br>

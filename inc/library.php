@@ -81,7 +81,7 @@ function getComments($link,$offset,$limit,&$existNext=null){
 }
 
 function getAllSections($link){
-	$query="SELECT * FROM etiquetas ORDER BY id DESC";
+	$query="SELECT * FROM etiquetas WHERE relacion <> 0 ORDER BY id DESC";
 	$result=$link->query($query);
 	$arrayTag=array();
 	$i=0;
@@ -104,6 +104,19 @@ function getPubli($link){
         $arrayTag[$i]["titulo"]=$obj->titulo;
         $arrayTag[$i]["img"]=$obj->imagen;
         $i++;
+    }
+    return $arrayTag;
+}
+
+function getPubliById($id, $link){
+    $query = "SELECT * FROM publicidad WHERE id='$id'";
+    $result=$link->query($query);
+    $arrayTag=array();
+    while($obj=$result->fetch_object()){
+        $arrayTag["id"]=$obj->id;
+        $arrayTag["anuncio"]=$obj->anuncio;
+        $arrayTag["titulo"]=$obj->titulo;
+        $arrayTag["img"]=$obj->imagen;
     }
     return $arrayTag;
 }
