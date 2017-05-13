@@ -13,6 +13,9 @@
         <a class="gestor-btn" href="index.php?tpl=SectionAg">Gestor de secciones</a>
     </li>
     <li>
+        <a class="gestor-btn" href="index.php?tpl=UploadAg">Subir Imagen</a>
+    </li>
+    <li>
         <a class="gestor-btn" href="#~">Organizador de la página de inicio</a>
     </li>
 </ul>

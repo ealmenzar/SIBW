@@ -619,8 +619,17 @@ ul{
     color: #86d49b;
     text-align: center;
 }
-
-
+.img-uploaded{
+    width: 30%;
+    display: inline-block;
+}
+.img-uploaded img{
+    width: 200px;
+    display: inline-block;
+}
+.img-uploaded p{
+    display: inline-block;
+}
 
 
 /*IVAN
