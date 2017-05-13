@@ -77,7 +77,7 @@ function getComments($link,$offset,$limit,&$existNext=null){
 }
 
 function getAllSections($link){
-	$query="SELECT * FROM etiquetas ORDER BY id DESC";
+	$query="SELECT * FROM etiquetas WHERE relacion <> 0 ORDER BY id DESC";
 	$result=$link->query($query);
 	$arrayTag=array();
 	$i=0;
