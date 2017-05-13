@@ -8,6 +8,7 @@ if(isset($_GET["remove"])){
     $id=str_replace("'","\'",$id_remove);
     $query="DELETE FROM publicidad WHERE id='$id'";
     $link->query($query);
+    echo "<h2><p class='check-modify'>Borrado correctamente &#10004;</p></h2>";
 }
 
 if (isset($_GET["edit"])) {

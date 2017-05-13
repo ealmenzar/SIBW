@@ -10,7 +10,7 @@ function conectar(){
 	    //cambiar a un archivo la salida
 
 	    echo "Error: Fallo al conectarse a MySQL debido a: \n";
-	    echo "Errno: " . $bd->connect_errno . "\n";
+	    echo "Errno: " . $db->connect_errno . "\n";
 	    echo "Error: " . $db->connect_error . "\n";
 
 	    exit;
@@ -89,32 +89,58 @@ function getAllSections($link){
 	return $arrayTag;
 }
 
+function getSectionsToAg($link){
+    $query="SELECT * FROM etiquetas ORDER BY id DESC";
+    $result=$link->query($query);
+    $arraySection=array();
+    $i=0;
+    while($obj=$result->fetch_object()){
+        $arraySection[$i]["id"]=$obj->id;
+        $arraySection[$i]["nombre"]=$obj->nombre;
+        $arraySection[$i]["relacion"]=$obj->relacion;
+        $i++;
+    }
+    return $arraySection;
+}
+
+function getSectionById($id, $link){
+    $query = "SELECT * FROM etiquetas WHERE id='$id'";
+    $result=$link->query($query);
+    $arraySection=array();
+    while($obj=$result->fetch_object()){
+        $arraySection["id"]=$obj->id;
+        $arraySection["nombre"]=$obj->nombre;
+        $arraySection["relacion"]=$obj->relacion;
+    }
+    return $arraySection;
+}
+
 function getPubli($link){
     $query = "SELECT * FROM publicidad ORDER BY id DESC";
     $result=$link->query($query);
-    $arrayTag=array();
+    $arrayPubli=array();
     $i=0;
     while($obj=$result->fetch_object()){
-        $arrayTag[$i]["id"]=$obj->id;
-        $arrayTag[$i]["anuncio"]=$obj->anuncio;
-        $arrayTag[$i]["titulo"]=$obj->titulo;
-        $arrayTag[$i]["img"]=$obj->imagen;
+        $arrayPubli[$i]["id"]=$obj->id;
+        $arrayPubli[$i]["anuncio"]=$obj->anuncio;
+        $arrayPubli[$i]["titulo"]=$obj->titulo;
+        $arrayPubli[$i]["img"]=$obj->imagen;
         $i++;
     }
-    return $arrayTag;
+    return $arrayPubli;
 }
 
 function getPubliById($id, $link){
     $query = "SELECT * FROM publicidad WHERE id='$id'";
     $result=$link->query($query);
-    $arrayTag=array();
+    $arrayPubli=array();
     while($obj=$result->fetch_object()){
-        $arrayTag["id"]=$obj->id;
-        $arrayTag["anuncio"]=$obj->anuncio;
-        $arrayTag["titulo"]=$obj->titulo;
-        $arrayTag["img"]=$obj->imagen;
+        $arrayPubli["id"]=$obj->id;
+        $arrayPubli["anuncio"]=$obj->anuncio;
+        $arrayPubli["titulo"]=$obj->titulo;
+        $arrayPubli["img"]=$obj->imagen;
     }
-    return $arrayTag;
+    return $arrayPubli;
 }
 
 function getConnectedNews($link, $limit, $id){
