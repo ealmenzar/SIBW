@@ -150,7 +150,7 @@ function getSectionById($id, $link){
 }
 
 function getPubli($link){
-    $query = "SELECT * FROM publicidad ORDER BY id DESC";
+    $query = "SELECT * FROM publicidad WHERE visible='1' ORDER BY orden ASC";
     $result=$link->query($query);
     $arrayPubli=array();
     $i=0;
@@ -179,8 +179,8 @@ function getPubliById($id, $link){
 
 function getConnectedNews($link, $limit, $id){
 	$id=str_replace("'", "\'", $id);
-    $query="SELECT * FROM noticias WHERE estado='publicado' INNER JOIN noticia_etiqueta ON noticia_etiqueta.id_noticia=noticias.id 
-WHERE noticia_etiqueta.id_etiqueta in (SELECT id_etiqueta from noticia_etiqueta WHERE id_noticia='$id') 
+    $query="SELECT * FROM noticias INNER JOIN noticia_etiqueta ON noticia_etiqueta.id_noticia=noticias.id 
+WHERE estado='publicado' AND noticia_etiqueta.id_etiqueta in (SELECT id_etiqueta from noticia_etiqueta WHERE id_noticia='$id') 
 AND noticias.id<>'$id' GROUP BY noticias.id ORDER BY RAND() LIMIT $limit";
     $result=$link->query($query);
     $arrayCon=array();

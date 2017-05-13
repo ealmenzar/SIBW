@@ -167,7 +167,7 @@ class Noticia {
                 $spotify=str_replace("'", "\'", $this->spotify);
                 $parrafo=str_replace("'", "\'", $this->parrafo);
                 $estado=str_replace("'", "\'", $this->estado);
-                $query="INSERT INTO noticias (id, titulo, grupo, frase, autor, publicacion, modificacion, portada, pie, spotify, parrafo, contenido, estado) VALUES (NULL, '$titulo', '$grupo', '$frase', '$autor', NOW(), NOW(), '$portada', '$pie', '$contenido', '$spotify', '$parrafo', '$estado');";
+                $query="INSERT INTO noticias (id, titulo, grupo, frase, autor, publicacion, modificacion, portada, pie, spotify, parrafo, contenido, estado) VALUES (NULL, '$titulo', '$grupo', '$frase', '$autor', NOW(), NOW(), '$portada', '$pie', '$spotify', '$parrafo', '$contenido', '$estado');";
                 $this->link->query($query);
                 $this->id=$this->link->insert_id;
             }
