@@ -626,3 +626,21 @@ ul{
 /*IVAN
 //////////////////////////////////////////////////////////////////
 MARINA*/
+
+.add-btn{
+    color:#000;
+    text-decoration: none;
+    margin: 10px;
+    transition-duration: 0.2s;
+    background-color: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: "Calibri Light";
+    padding: 15px 15px;
+    display: block;
+    width: 20%;
+}
+.add-btn:hover{
+    background-color: #c9bcbb;
+    color: white;
+}

@@ -5,7 +5,7 @@ if(!isset($_SESSION["user"]) || unserialize($_SESSION["user"])->permiso !== "jef
 if(isset($_GET["remove"])){
     $id_remove=$_GET["remove"];
     $id=str_replace("'","\'",$id_remove);
-    $query="DELETE FROM etiquetas WHERE id='$id'";
+    $query="DELETE FROM etiquetas WHERE id='$id' OR relacion='$id'";
     $link->query($query);
     echo "<h2><p class='check-modify'>Borrado correctamente &#10004;</p></h2>";
 }

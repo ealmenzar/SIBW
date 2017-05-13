@@ -52,7 +52,7 @@ if (isset($_GET["edit"]) || isset($_GET["add"])) {
     $news=getNews($link,($pag-1)*$numPorPag,$numPorPag,"all",$sig);
     $isJefe=$per=="jefe";
     ?>
-    <a href="index.php?tpl=NewsAg&add=1">Añadir Noticia</a>
+    <a class="add-btn" href="index.php?tpl=NewsAg&add=1">Añadir Noticia</a>
     <table class="white-table">
         <thead>
             <tr>

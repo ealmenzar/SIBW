@@ -186,4 +186,5 @@ function saveClick($link,$anuncio){
     $query="INSERT INTO clicks (click, ip, id_publi, fecha) VALUES (NULL, '$ip', '$anuncio', NOW())";
     $link->query($query);
 }
+
 ?>
