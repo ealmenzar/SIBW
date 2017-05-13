@@ -16,7 +16,7 @@ if (isset($_GET["edit"])) {
         $cmt->email=$_POST["email"];
         $cmt->contenido=$_POST["contenido"];
         $cmt->save();
-        echo "<p>Modificado correctamente</p>";
+        echo "<h2><p class='check-modify'>Modificado correctamente &#10004;</p></h2>";
         echo $cmt->showEditForm();
     }else{
         $cmt=new Comentario($link);

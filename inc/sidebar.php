@@ -1,19 +1,19 @@
 <?php if(isset($_SESSION["user"]) && unserialize($_SESSION["user"])->permiso === "jefe"):?>
-<ul>
+<ul class="gestor">
     <li>
-        <a href="index.php?tpl=CommentAg">Gestor de comentarios</a>
+        <a class="gestor-btn" href="index.php?tpl=CommentAg">Gestor de comentarios</a>
     </li>
     <li>
-        <a href="#~">Gestor de noticias</a>
+        <a class="gestor-btn" href="#~">Gestor de noticias</a>
     </li>
     <li>
-        <a href="#~">Gestor de publicidad </a>
+        <a class="gestor-btn" href="index.php?tpl=PubliAg">Gestor de publicidad </a>
     </li>
     <li>
-        <a href="#~">Gestor de secciones</a>
+        <a class="gestor-btn" href="#~">Gestor de secciones</a>
     </li>
     <li>
-        <a href="#~">Organizador de la página de inicio</a>
+        <a class="gestor-btn" href="#~">Organizador de la página de inicio</a>
     </li>
 </ul>
 <?php endif;?>

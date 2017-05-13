@@ -104,6 +104,19 @@ function getPubli($link){
     return $arrayTag;
 }
 
+function getPubliById($id, $link){
+    $query = "SELECT * FROM publicidad WHERE id='$id'";
+    $result=$link->query($query);
+    $arrayTag=array();
+    while($obj=$result->fetch_object()){
+        $arrayTag["id"]=$obj->id;
+        $arrayTag["anuncio"]=$obj->anuncio;
+        $arrayTag["titulo"]=$obj->titulo;
+        $arrayTag["img"]=$obj->imagen;
+    }
+    return $arrayTag;
+}
+
 function getConnectedNews($link, $limit, $id){
 	$id=str_replace("'", "\'", $id);
     $query="SELECT * FROM noticias INNER JOIN noticia_etiqueta ON noticia_etiqueta.id_noticia=noticias.id 
