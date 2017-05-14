@@ -20,6 +20,7 @@ class Noticia {
         $this->spotify=$obj->spotify;
         $this->parrafo=$obj->parrafo;
         $this->estado=$obj->estado;
+        $this->orden=$obj->orden;
         $this->isSet=true;
     }
 
@@ -123,6 +124,23 @@ class Noticia {
                             </a>'."</td>":"").
         "</tr>";
     }
+
+    function showNewLine2(){
+        return "<tr>
+            <td>".$this->id."</td>
+            <td>".$this->titulo."</td>
+            <td>".$this->grupo."</td>
+            <td>".$this->frase."</td>
+            <td>".$this->autor."</td>
+            <td>".convertDateSystemToHuman($this->publicacion)."</td>
+            <td>".convertDateSystemToHuman($this->modificacion)."</td>
+            <td>".$this->portada."</td>
+            <td>".$this->pie."</td>
+            <td>".$this->estado."</td>
+            <td><input type='text' name='ordenNot[$this->id]' value='$this->orden'></td>
+            </tr>";
+    }
+
     function setId($id){
         $this->id = $id;
         return $this;
@@ -154,7 +172,8 @@ class Noticia {
                 $spotify=str_replace("'", "\'", $this->spotify);
                 $parrafo=str_replace("'", "\'", $this->parrafo);
                 $estado=str_replace("'", "\'", $this->estado);
-                $query="UPDATE noticias SET titulo='$titulo', grupo='$grupo', frase='$frase', autor='$autor', modificacion=NOW(), portada='$portada', pie='$pie', spotify='$spotify', parrafo='$parrafo', contenido='$contenido', estado='$estado' WHERE id ='$id'";
+                $orden=str_replace("'", "\'", $this->orden);
+                $query="UPDATE noticias SET titulo='$titulo', grupo='$grupo', frase='$frase', autor='$autor', modificacion=NOW(), portada='$portada', pie='$pie', spotify='$spotify', parrafo='$parrafo', contenido='$contenido', estado='$estado', orden='$orden' WHERE id ='$id'";
                 $this->link->query($query);
             }else{
                 $titulo=str_replace("'", "\'", $this->titulo);
@@ -175,12 +194,10 @@ class Noticia {
         return $this;
     }
     function associate($ids){
-        echo "$query";
         foreach ($ids as $id) {
             $arrayPair[]="(".$this->id.",$id)";
         }
         $query="INSERT INTO noticia_etiqueta (id_noticia, id_etiqueta) VALUES ".implode(",",$arrayPair);
-        echo $query;
         $this->link->query($query);
     }
     function remove(){
@@ -190,9 +207,9 @@ class Noticia {
             $this->link->query($query);
         }
     }
-    function showFullNew($isUser) { 
+    function showFullNew($isUser,$isComment) { 
     	if($this->isSet && $this->estado=="publicado"){
-    	    $str="<aside id='coment-block'>";
+    	    $str="<aside id='coment-block' ".($isComment?"class='show'": "").">";
     	    if(isset($this->comments)){
                 $str.="
                     <ul id='comments'>";
@@ -208,7 +225,7 @@ class Noticia {
                     Por favor, siga las reglas de la página web y no comparta información personal, como correos, números de teléfono... Y NO INSULTE
                     </p>
                         <form onsubmit='return SubmitComment(\"author\",\"email\",\"comment\",\"idNot\",\"comments\")'>
-                            <input type='text' placeholder='Nombre' id='author'  onkeyup='ValidateAuthor(this,\"show\",\"error-1\")' required><br>
+                            <input type='text' placeholder='Nombre' id='author'  ".((isset($_SESSION["user"]) && (unserialize($_SESSION["user"])->permiso =="jefe"))? "" : "onkeyup='ValidateAuthor(this,\"show\",\"error-1\")'")." required><br>
                             <input type='email' placeholder='Email' id='email' required><br>
                             <input type='hidden' id='idNot' value='$this->id' required>
                             <textarea placeholder='Escribe aquí tu comentario...' id='comment' onkeyup='ValidateComment(this,\"show\",\"error-2\")' required></textarea><br>

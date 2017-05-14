@@ -71,7 +71,7 @@ if (isset($_GET["edit"])) {
                 </div>";
         }
     } else {
-        $arrayPubli = getPubli($link);
+        $arrayPubli = getAllPubli($link);
         ?>
         <a class="add-btn" href="index.php?tpl=PubliAg&add=1">Añadir Publicidad</a>
         <table class="white-table">

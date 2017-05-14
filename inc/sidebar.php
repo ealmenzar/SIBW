@@ -16,7 +16,14 @@
         <a class="gestor-btn" href="index.php?tpl=UploadAg">Subir Imagen</a>
     </li>
     <li>
-        <a class="gestor-btn" href="#~">Organizador de la página de inicio</a>
+        <a class="gestor-btn" href="index.php?tpl=Manage">Organizador de la página de inicio</a>
+    </li>
+</ul>
+<?php endif;?>
+<?php if(isset($_SESSION["user"]) && unserialize($_SESSION["user"])->permiso === "colaborador"):?>
+<ul class="gestor">
+    <li>
+        <a class="gestor-btn" href="index.php?tpl=NewsAg&add=1">Añadir de noticias</a>
     </li>
 </ul>
 <?php endif;?>

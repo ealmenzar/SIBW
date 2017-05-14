@@ -1,29 +1,40 @@
     <?php 
         echo "<h1>Destacados</h1>";
-        $dict=getAllSubSections($link);
+        $dict=getAllTags2($link);
         if(!isset($dict[$_GET["section"]])){
             echo "La sección indicada no existe, las siguientes son existentes:<br> ";
             $str="";
-            foreach ($dict as $name => $id) {
-                $str.=" <a class='subsection-btn' href=\"index.php?tpl=Sections&section=$name\">$name</a> ";
+            foreach ($dict as $name => $value) {
+                if($value["relacion"]==0){
+                  $str.=" <a class='subsection-btn' href=\"index.php?tpl=Sections&section=$name\">$name</a> ";
+                }
+                
             };
             echo $str;
         }else{
+            $idSection=($dict[$_GET["section"]]["relacion"]==0)?$dict[$_GET["section"]]["id"]:$dict[$_GET["section"]]["relacion"];
+
             echo "<h2>".$_GET["section"]."</h2>";
             $str="";
-            foreach ($dict as $name => $id) {
-                $str.=" <a class='subsection-btn' href=\"index.php?tpl=Sections&section=$name\">$name</a> ";
+            foreach ($dict as $name => $value) {
+                if($value["id"]==$idSection){
+                  $nameSection=$name;
+                }
+                if ($value["relacion"]==$idSection) {
+                  $str.=" <a class='subsection-btn' href=\"index.php?tpl=Sections&section=$name\">$name</a> ";
+                }
             };
+            $str.=" <a class='subsection-btn' href=\"index.php?tpl=Sections&section=$nameSection\">Todas</a> ";
             echo $str;
             $pag=(isset($_GET["pagina"]) && ((int) $_GET["pagina"])>0)?(int) $_GET["pagina"]:1;
             $numPag=6;
             $offset=($pag-1)*$numPag;
 
-            $arrayNews=getNews($link,$offset,$numPag,$dict[$_GET["section"]],$next);
+            $arrayNews=getNews($link,$offset,$numPag,$dict[$_GET["section"]]["id"],$next);
             if(count($arrayNews)==0){
                 $pag=1;
                 $offset=($pag-1)*$numPag;
-                $arrayNews=getNews($link,$offset,$numPag,$dict[$_GET["section"]],$next);
+                $arrayNews=getNews($link,$offset,$numPag,$dict[$_GET["section"]]["id"],$next);
             }
             if(count($arrayNews)>0){
                 echo "<ul class='news-list'>";

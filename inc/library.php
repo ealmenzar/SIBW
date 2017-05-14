@@ -48,8 +48,8 @@ function getNews($link,$offset,$limit,$section,&$existNext=null){
 	if($section==0){
 		$query="SELECT * FROM noticias WHERE estado='publicado' ORDER BY orden ASC LIMIT $limit2 OFFSET $offset ";
 	}else{
-		$query="SELECT * FROM noticias WHERE estado='publicado' ORDER BY orden ASC INNER JOIN noticia_etiqueta ON noticia_etiqueta.id_noticia=noticias.id 
-		WHERE noticia_etiqueta.id_etiqueta='$section' ORDER BY noticias.id DESC LIMIT $limit2 OFFSET $offset";
+		$query="SELECT * FROM noticias INNER JOIN noticia_etiqueta ON noticia_etiqueta.id_noticia=noticias.id 
+		WHERE noticias.estado='publicado' AND noticia_etiqueta.id_etiqueta='$section' ORDER BY noticias.orden ASC LIMIT $limit2 OFFSET $offset";
 	}
 	$result=$link->query($query);
 	$arrayNot=array();
@@ -84,6 +84,19 @@ function getAllNews($link,$offset,$limit,$section,&$existNext=null){
 	$existNext=$result->fetch_object();
 	return $arrayNot;
 }
+function getAllNews2($link){
+	$query="SELECT * FROM noticias ORDER BY id DESC";
+	$result=$link->query($query);
+	$arrayNot=array();
+	$i=0;
+	while($obj=$result->fetch_object()){
+		$Not=new Noticia($link);
+		$Not->setByMySQLObject($obj);
+		$arrayNot[$i]=$Not;
+		$i++;
+	}
+	return $arrayNot;
+}
 
 function getComments($link,$offset,$limit,&$existNext=null){
 	$limit2=$limit+1;
@@ -101,6 +114,18 @@ function getComments($link,$offset,$limit,&$existNext=null){
 	return $arrayCom;
 }
 
+function getAllSections($link){
+	$query="SELECT * FROM etiquetas WHERE relacion='0' ORDER BY id DESC";
+	$result=$link->query($query);
+	$arrayTag=array();
+	$i=0;
+	while($obj=$result->fetch_object()){
+		$arrayTag[$obj->nombre]=$obj->id;
+		$i++;
+	}
+	return $arrayTag;
+}
+
 function getAllSubSections($link){
 	$query="SELECT * FROM etiquetas WHERE relacion <> 0 ORDER BY id DESC";
 	$result=$link->query($query);
@@ -111,6 +136,18 @@ function getAllSubSections($link){
 		$i++;
 	}
 	$arrayTag["Todas"]=0;
+	return $arrayTag;
+}
+function getAllTags2($link){
+	$query="SELECT * FROM etiquetas ORDER BY id DESC";
+	$result=$link->query($query);
+	$arrayTag=array();
+	$i=0;
+	while($obj=$result->fetch_object()){
+		$arrayTag[$obj->nombre]["id"]=$obj->id;
+		$arrayTag[$obj->nombre]["relacion"]=$obj->relacion;
+		$i++;
+	}
 	return $arrayTag;
 }
 function getAllTags($link){
@@ -159,9 +196,32 @@ function getPubli($link){
         $arrayPubli[$i]["anuncio"]=$obj->anuncio;
         $arrayPubli[$i]["titulo"]=$obj->titulo;
         $arrayPubli[$i]["img"]=$obj->imagen;
+        $arrayPubli[$i]["orden"]=$obj->orden;
+        $arrayPubli[$i]["visible"]=$obj->visible;
         $i++;
     }
     return $arrayPubli;
+}
+function getAllPubli($link){
+    $query = "SELECT * FROM publicidad ORDER BY orden ASC";
+    $result=$link->query($query);
+    $arrayPubli=array();
+    $i=0;
+    while($obj=$result->fetch_object()){
+        $arrayPubli[$i]["id"]=$obj->id;
+        $arrayPubli[$i]["anuncio"]=$obj->anuncio;
+        $arrayPubli[$i]["titulo"]=$obj->titulo;
+        $arrayPubli[$i]["img"]=$obj->imagen;
+        $arrayPubli[$i]["orden"]=$obj->orden;
+        $arrayPubli[$i]["visible"]=$obj->visible;
+        $i++;
+    }
+    return $arrayPubli;
+}
+
+function updatePubli($visible,$orden,$id,$link){
+    $query="UPDATE publicidad SET visible='$visible', orden='$orden' WHERE id='$id'";
+    $link->query($query);
 }
 
 function getPubliById($id, $link){

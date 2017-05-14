@@ -8,18 +8,15 @@
                     <a href="index.php">PORTADA
                         <img src="img/noun_772443_cc.png"></a>
                 </li>
-                <li class="no-log">
-                    <a href="#~">FESTIVALES
-                        <img src="img/noun_580939_cc.png"></a>
-                </li>
-                <li class="no-log">
-                    <a href="#~">CONCIERTOS
-                        <img src="img/concert.png"></a>
-                </li>
-                <li class="no-log">
-                    <a href="index.php?tpl=Sections">DESTACADOS
-                        <img src="img/festival.png"></a>
-                </li>
+                <?php 
+                    $secs=getAllSections($link);
+                    foreach ($secs as $section => $id) {
+                        echo '<li class="no-log">
+                            <a href="index.php?tpl=Sections&section='.$section.'"">'.strtoupper($section).'
+                            <img src="img/noun_580939_cc.png"></a>
+                        </li>';
+                    }
+                ?>
             </ul>
             <?php
             if(isset($_SESSION["user"])){
