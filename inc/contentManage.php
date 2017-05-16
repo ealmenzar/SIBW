@@ -17,6 +17,7 @@ if(isset($_POST["ordenNot"])){
 }
 $arrayPubli = getAllPubli($link);
 ?>
+<h1>Publicidad</h1>
 <form method="post" action="">
 <table class="white-table">
     <thead>
@@ -58,7 +59,7 @@ $arrayPubli = getAllPubli($link);
     ?>
     </tbody>
 </table>
-<input type="submit" value="Guardar">
+<p style="text-align: end"><input class="edit-new" type="submit" value="Guardar"></p>
 </form>
 <form method="post" action="">
 <?php
@@ -70,18 +71,16 @@ if(isset($_GET["pag"]) && $_GET["pag"]>0){
     $numPorPag=30;
     $news=getAllNews($link,($pag-1)*$numPorPag,$numPorPag,"all",$sig);
     ?>
+    <h1>Noticias</h1>
     <table class="white-table">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Titulo</th>
                 <th>Grupo</th>
-                <th>Frase</th>
                 <th>Autor</th>
                 <th>Publicación</th>
                 <th>Modificación</th>
-                <th>Portada</th>
-                <th>Pie</th>
                 <th>Estado</th>
                 <th>Orden</th>
             </tr>
@@ -94,7 +93,7 @@ if(isset($_GET["pag"]) && $_GET["pag"]>0){
             ?>
         </tbody>
     </table>
-<input type="submit" value="Guardar">
+    <p style="text-align: end"><input class="edit-new" type="submit" value="Guardar">
 </form>
 
 <?php 

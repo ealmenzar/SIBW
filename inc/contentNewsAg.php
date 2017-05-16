@@ -13,10 +13,10 @@ if (isset($_GET["edit"]) || isset($_GET["add"])) {
         isset($_GET["edit"]) ? $not->setId($_GET["edit"])->load() : "";
         $not->isSet=true;
         if (isset($_FILES['portada'])) {
-            if(isset($_GET["edit"])){
+            /*if(isset($_GET["edit"])){
                 unlink($not->portada);
-            }
-            $url="img/portadas/".$_POST["titulo"]."-".basename($_FILES['portada']['name']);
+            }*/
+            $url="img/portadas/".basename($_FILES['portada']['name']);
             move_uploaded_file($_FILES['portada']['tmp_name'], $url);
             $not->portada=$url;
         }
@@ -31,7 +31,7 @@ if (isset($_GET["edit"]) || isset($_GET["add"])) {
         $not->estado=isset($_POST["estado"])?$_POST["estado"]:(($per=="jefe")?"publicado":"pendiente");
         $not->save();
         if(isset($_GET["edit"])){
-            echo "<p>Modificado correctamente</p>";
+            echo "<h2><p class='check-modify'></p></h2>";
             echo $not->showEditForm();
         }else{
             $not->associate(explode("-",$_POST["subseccion"]));
@@ -60,12 +60,9 @@ if (isset($_GET["edit"]) || isset($_GET["add"])) {
                 <th>ID</th>
                 <th>Titulo</th>
                 <th>Grupo</th>
-                <th>Frase</th>
                 <th>Autor</th>
                 <th>Publicación</th>
                 <th>Modificación</th>
-                <th>Portada</th>
-                <th>Pie</th>
                 <th>Estado</th>
                 <?php echo ($isJefe?"<th>Acciones</th>":"");?>
             </tr>

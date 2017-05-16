@@ -653,3 +653,14 @@ MARINA*/
     background-color: #c9bcbb;
     color: white;
 }
+
+.edit-new{
+    width: 100px;
+    height: 30px;
+    border: 0px;
+    border-radius: 4px;
+    background-color: #c9bcbb;
+    color:rgb(255, 248, 248);
+    font-size: 20px;
+    text-decoration: none;
+}

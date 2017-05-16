@@ -1,5 +1,4 @@
-    <?php 
-        echo "<h1>Destacados</h1>";
+    <?php
         $dict=getAllTags2($link);
         if(!isset($dict[$_GET["section"]])){
             echo "La sección indicada no existe, las siguientes son existentes:<br> ";
@@ -8,13 +7,12 @@
                 if($value["relacion"]==0){
                   $str.=" <a class='subsection-btn' href=\"index.php?tpl=Sections&section=$name\">$name</a> ";
                 }
-                
+
             };
             echo $str;
         }else{
             $idSection=($dict[$_GET["section"]]["relacion"]==0)?$dict[$_GET["section"]]["id"]:$dict[$_GET["section"]]["relacion"];
 
-            echo "<h2>".$_GET["section"]."</h2>";
             $str="";
             foreach ($dict as $name => $value) {
                 if($value["id"]==$idSection){
@@ -24,6 +22,8 @@
                   $str.=" <a class='subsection-btn' href=\"index.php?tpl=Sections&section=$name\">$name</a> ";
                 }
             };
+            echo "<h1>".$nameSection."</h1>";
+            echo "<h2>".(($dict[$_GET["section"]]["relacion"]==0)?'Todas':$_GET["section"])."</h2>";
             $str.=" <a class='subsection-btn' href=\"index.php?tpl=Sections&section=$nameSection\">Todas</a> ";
             echo $str;
             $pag=(isset($_GET["pagina"]) && ((int) $_GET["pagina"])>0)?(int) $_GET["pagina"]:1;

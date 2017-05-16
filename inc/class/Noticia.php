@@ -108,12 +108,9 @@ class Noticia {
             <td>".$this->id."</td>
             <td>".$this->titulo."</td>
             <td>".$this->grupo."</td>
-            <td>".$this->frase."</td>
             <td>".$this->autor."</td>
             <td>".convertDateSystemToHuman($this->publicacion)."</td>
             <td>".convertDateSystemToHuman($this->modificacion)."</td>
-            <td>".$this->portada."</td>
-            <td>".$this->pie."</td>
             <td>".$this->estado."</td>".($isJefe ?
             "<td>".'<a style="display:inline-block" href="index.php?tpl=NewsAg&remove='.$this->id.'">
                             <svg style="height:30px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" viewBox="0 0 79 100" version="1.1" x="0px" y="0px"><title>trash</title><desc>Created with Sketch.</desc><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"><path d="M58.6214398,90 L20.3785602,90 C17.2516658,90 14.2778841,86.49426 13.7379424,82.1673877 L6.76143193,23.4782609 L72.2385681,23.4782609 L65.2620576,82.1673877 C64.722246,86.49322 61.7484595,90 58.6214398,90 L58.6214398,90 Z M37.525,79.2391304 C37.525,80.3196876 38.4092376,81.1956522 39.5,81.1956522 C40.5907624,81.1956522 41.475,80.3196876 41.475,79.2391304 L41.475,34.2391304 C41.475,33.1585733 40.5907624,32.2826087 39.5,32.2826087 C38.4092376,32.2826087 37.525,33.1585733 37.525,34.2391304 L37.525,79.2391304 L37.525,79.2391304 Z M51.4175337,78.8329788 C51.2846032,79.9054816 52.0544884,80.8816702 53.1371204,81.013357 C54.2197524,81.1450438 55.2051605,80.3823617 55.338091,79.3098589 L60.8740059,34.645282 C61.0069364,33.5727792 60.2370512,32.5965907 59.1544192,32.4649039 C58.0717872,32.3332171 57.0863791,33.0958992 56.9534486,34.168402 L51.4175337,78.8329788 L51.4175337,78.8329788 Z M23.661909,79.3098589 C23.7948395,80.3823617 24.7802476,81.1450438 25.8628796,81.013357 C26.9455116,80.8816702 27.7153968,79.9054816 27.5824663,78.8329788 L22.0465514,34.168402 C21.9136209,33.0958992 20.9282128,32.3332171 19.8455808,32.4649039 C18.7629488,32.5965907 17.9930636,33.5727792 18.1259941,34.645282 L23.661909,79.3098589 L23.661909,79.3098589 Z M19.996875,11.7391304 L3.94465095,11.7391304 C1.76079116,11.7391304 0,13.4910597 0,15.6521739 C0,17.8088907 1.76608039,19.5652174 3.94465095,19.5652174 L75.055349,19.5652174 C77.2392088,19.5652174 79,17.8132882 79,15.6521739 C79,13.4954571 77.2339196,11.7391304 75.055349,11.7391304 L59.003125,11.7391304 L59.003125,7.81719411 C59.003125,3.49505008 55.4609247,0 51.0977115,0 L27.9022885,0 C23.5318911,0 19.996875,3.49491816 19.996875,7.81719411 L19.996875,11.7391304 L19.996875,11.7391304 Z M27.896875,11.7391304 L51.1033048,11.7391304 C51.1034486,10.3810594 51.1030144,7.82608696 51.0977115,7.82608696 C51.0977115,7.82608696 27.896875,7.82066799 27.896875,7.81719411 L27.896875,11.7391304 L27.896875,11.7391304 Z" fill="#000000" sketch:type="MSShapeGroup"/></g><text x="0" y="105" fill="#000000" font-size="5px" font-weight="bold" font-family="\'Helvetica Neue\', Helvetica, Arial-Unicode, Arial, Sans-serif">Created by Julynn B.</text><text x="0" y="110" fill="#000000" font-size="5px" font-weight="bold" font-family="\'Helvetica Neue\', Helvetica, Arial-Unicode, Arial, Sans-serif">from the Noun Project</text></svg>
@@ -130,12 +127,9 @@ class Noticia {
             <td>".$this->id."</td>
             <td>".$this->titulo."</td>
             <td>".$this->grupo."</td>
-            <td>".$this->frase."</td>
             <td>".$this->autor."</td>
             <td>".convertDateSystemToHuman($this->publicacion)."</td>
             <td>".convertDateSystemToHuman($this->modificacion)."</td>
-            <td>".$this->portada."</td>
-            <td>".$this->pie."</td>
             <td>".$this->estado."</td>
             <td><input type='text' name='ordenNot[$this->id]' value='$this->orden'></td>
             </tr>";
@@ -237,7 +231,7 @@ class Noticia {
             }
             $str.="</aside>";
                     if(isset($_SESSION["user"]) && ((unserialize($_SESSION["user"])->permiso) == "jefe")){
-                        $str.='<a style="display:inline-block" href="index.php?tpl=NewsAg&edit='.$this->id.'">Editar</a>';
+                        $str.='<a class="edit-new" style="display:inline-block" href="index.php?tpl=NewsAg&edit='.$this->id.'">Editar</a>';
                     }
                     $str.="
                     <h1 style='font-size: xx-large'> $this->titulo </h1>
@@ -248,8 +242,8 @@ class Noticia {
 	                </h4>
 	                <div id='autor'>
 	                    <address>por $this->autor</address>
-	                    Publicación: ".convertDateSystemToHuman($this->publicacion)."<br>
-	                    Última modificación: ".convertDateSystemToHuman($this->modificacion)."
+	                    Publicación: ".$this->publicacion."<br>
+	                    Última modificación: ".$this->modificacion."
 	                </div>
 	                </p>
 	                <div class='main-img'>
