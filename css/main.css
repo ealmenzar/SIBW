@@ -618,6 +618,7 @@ ul{
     font-weight: bold;
     color: #86d49b;
     text-align: center;
+    margin: auto;
 }
 .img-uploaded{
     width: 30%;
@@ -630,7 +631,11 @@ ul{
 .img-uploaded p{
     display: inline-block;
 }
-
+select{
+    margin :20px;
+    width: 200px;
+    height: 30px;
+}
 
 /*IVAN
 //////////////////////////////////////////////////////////////////

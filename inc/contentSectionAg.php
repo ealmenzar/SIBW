@@ -14,6 +14,7 @@ if (isset($_GET["edit"])) {
     $id_edit = $_GET["edit"];
     $id = str_replace("'", "\'", $id_edit);
     $arraySections = getSectionById($id, $link);
+    $sect=getAllSections($link);
     if(isset($_POST["nombre"],$_POST["relacion"])) {
         $nombre = str_replace("'", "\'", $_POST["nombre"]);
         $relacion = str_replace("'", "\'", $_POST["relacion"]);
@@ -25,7 +26,12 @@ if (isset($_GET["edit"])) {
             <div class='edit'>
             <form method='post' action=''>
                 <input type=\"text\" name='nombre' value='".$nombre."'><br>
-                <input type=\"text\" name='relacion' value='".$relacion."'><br>
+                <select name='relacion'>";
+                foreach ($sect as $name => $id) {
+                    echo "<option value='".$id."' ".(($id==$relacion)?"selected":"").">$name</option>";
+                }
+                
+                echo "</select>
                 <input type=\"submit\" value='Guardar'><br>
             </form>
             </div>";
@@ -34,7 +40,12 @@ if (isset($_GET["edit"])) {
             <div class='edit'>
             <form method='post' action=''>
                 <input type=\"text\" name='nombre' value='".$arraySections['nombre']."'><br>
-                <input type=\"text\" name='relacion' value='".$arraySections['relacion']."'><br>
+                <select name='relacion'>";
+                foreach ($sect as $name => $id) {
+                    echo "<option value='".$id."' ".(($id===$arraySections['relacion']) ? "selected" : "").">$name</option>";
+                }
+                
+                echo "</select>
                 <input type=\"submit\" value='Guardar'><br>
             </form>
             </div>";

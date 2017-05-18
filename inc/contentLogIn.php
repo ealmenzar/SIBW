@@ -47,7 +47,7 @@ if(isset($_POST["login-email"],$_POST["login-pwd-encrypted"])){
         <input type="password" name="login-pwd" id="login-pwd" placeholder="contraseña" required><br>
         <input type="hidden" name="login-pwd-encrypted" id="login-pwd-encrypted" placeholder="contraseña" required>
         <input type="submit" value="Entrar"><br>
-        <a href="index.php?tpl=LogIn&register=1">Registrarse</a>
+        <a class="edit-new" href="index.php?tpl=LogIn&register=1">Registrarse</a>
     </form>
 <?php endif;?>
 </section>

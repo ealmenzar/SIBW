@@ -33,14 +33,14 @@ if (isset($_GET["edit"])) {
     $numPorPag=30;
     $comments=getComments($link,($pag-1)*$numPorPag,$numPorPag,$sig);
     ?>
-    <select id="not-id" onchange="document.getElementById('link-add').href=this.value">
+    <select style="display: inline-block;" onchange="document.getElementById('link-add').href=this.value">
         <?php 
         $nots=getAllNews2($link);
         foreach ($nots as $not) {
             echo "<option value='index.php?tpl=New&opencomment=1&idNew=".$not->id."''>".$not->titulo."</option>";
         }
         ?>
-    </select><a class="add-btn" id="link-add" href="index.php?tpl=New&opencomment=1&idNew=<?php echo $nots[0]->id;?>">Añadir comentario</a>
+    </select><a class="edit-new" style="display: inline-block;width: 170px;" id="link-add" href="index.php?tpl=New&opencomment=1&idNew=<?php echo $nots[0]->id;?>">Añadir comentario</a>
     <table class="white-table">
         <thead>
             <tr>

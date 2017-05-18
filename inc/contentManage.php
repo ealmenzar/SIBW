@@ -59,7 +59,7 @@ $arrayPubli = getAllPubli($link);
     ?>
     </tbody>
 </table>
-<p style="text-align: end"><input class="edit-new" type="submit" value="Guardar"></p>
+<p style="text-align: right; margin: 1em auto;min-width: 700px"><input class="edit-new" type="submit" value="Guardar"></p>
 </form>
 <form method="post" action="">
 <?php
@@ -93,7 +93,7 @@ if(isset($_GET["pag"]) && $_GET["pag"]>0){
             ?>
         </tbody>
     </table>
-    <p style="text-align: end"><input class="edit-new" type="submit" value="Guardar">
+    <p style="text-align: right; margin: 1em auto;min-width: 700px"><input class="edit-new" type="submit" value="Guardar">
 </form>
 
 <?php 

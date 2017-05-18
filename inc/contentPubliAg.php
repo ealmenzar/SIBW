@@ -14,39 +14,31 @@ if(isset($_GET["remove"])){
 if (isset($_GET["edit"])) {
     $id_edit = $_GET["edit"];
     $id = str_replace("'", "\'", $id_edit);
-    $arrayPubli = getPubliById($id, $link);
-    if(isset($_POST["titulo"],$_POST["anuncio"],$_FILES["img"])) {
+    if(isset($_FILES['img']['name']) && $_FILES['img']['name']!="") {
         $url="img/publi/".basename($_FILES['img']['name']);
         move_uploaded_file($_FILES['img']['tmp_name'], $url);
         $img=$url;
         $img = str_replace("'", "\'", $img);
+        
+    }
+    if(isset($_POST["titulo"],$_POST["anuncio"])) {
         $titulo = str_replace("'", "\'", $_POST["titulo"]);
         $anuncio = str_replace("'", "\'", $_POST["anuncio"]);
-
-        $query = "UPDATE publicidad SET titulo = '$titulo',anuncio = '$anuncio',imagen = '$img' WHERE id ='$id'";
+        $query = "UPDATE publicidad SET titulo = '$titulo',anuncio = '$anuncio'".(isset($img)?",imagen = '$img'":"")." WHERE id ='$id'";
         $link->query($query);
         echo "<h2><p class='check-modify'>Modificado correctamente &#10004;</p></h2>";
-        echo"
-            <div class='edit'>
-            <form method='post' action=''>
-                <input type=\"text\" name='titulo' value='".$titulo."'><br>
-                <input type=\"text\" name='anuncio' value='".$anuncio."'><br>
-                <input type='text' name='img' value='".$img."'><br>
-                <input type=\"submit\" value='Guardar'><br>
-            </form>
-            </div>";
 
-    } else {
-            echo "
-                <div class='edit'>
-                <form method='post' action='' enctype=\"multipart/form-data\">
-                    <input type=\"text\" name='titulo' value='" . $arrayPubli['titulo'] . "' required><br>
-                    <input type=\"text\" name='anuncio' value='" . $arrayPubli['anuncio'] . "' required><br>
-                    <h3>Imagen </h3><input type=\"file\" name='img' value='" . $arrayPubli['img'] . "' required><br>
-                    <input type=\"submit\" value='Guardar'><br>
-                </form>
-                </div>";
-        }
+    }
+    $arrayPubli = getPubliById($id, $link);
+    echo "
+        <div class='edit'>
+        <form method='post' action='' enctype=\"multipart/form-data\">
+            <input type=\"text\" name='titulo' value='" . $arrayPubli['titulo'] . "' required><br>
+            <input type=\"text\" name='anuncio' value='" . $arrayPubli['anuncio'] . "'  required><br>
+            <h3>Imagen </h3><input type=\"file\" name='img'><br>
+            <input type=\"submit\" value='Guardar'><br>
+        </form>
+        </div>";
 } else {
     if (isset($_GET["add"])) {
         if (isset($_POST["titulo"], $_POST["anuncio"], $_FILES["img"])) {

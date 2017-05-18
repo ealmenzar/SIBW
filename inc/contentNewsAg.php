@@ -49,11 +49,26 @@ if (isset($_GET["edit"]) || isset($_GET["add"])) {
     }else{
         $pag=1;
     }
+    if(isset($_GET["section"])){
+        $sect=$_GET["section"];
+    }else{
+        $sect=0;
+    }
     $numPorPag=30;
-    $news=getAllNews($link,($pag-1)*$numPorPag,$numPorPag,"all",$sig);
+    $news=getAllNews($link,($pag-1)*$numPorPag,$numPorPag,$sect,$sig);
     $isJefe=$per=="jefe";
+    $tags=getAllTags($link);
     ?>
     <a class="add-btn" href="index.php?tpl=NewsAg&add=1">Añadir Noticia</a>
+    <select onchange="document.getElementById('link-seccion').href=this.value">
+    <?php
+        foreach ($tags as $id => $tag) {
+            echo '<option value="index.php?tpl=NewsAg&section='.$id.'">'.$tag->nombre.(($tag->relacion==0)?"(Sección)":"(Subsección de ".$tags[$tag->relacion]->nombre.")").'</option>';
+        }
+        echo '<option value="index.php?tpl=NewsAg" selected>Todas</option>';
+    ?>
+    </select>
+    <a class="edit-new" style="display: inline-block;width: 65px;" id="link-seccion" href="index.php?tpl=NewsAg">filtrar</a>
     <table class="white-table">
         <thead>
             <tr>
